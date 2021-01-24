@@ -7,6 +7,8 @@ public class Main {
      */
     public static void main(String[] args) {
         System.out.println("Holi");
+        Screen sc = new Screen("Flapply Bird");
+        
     }
     
 }
