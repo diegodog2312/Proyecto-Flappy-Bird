@@ -17,14 +17,14 @@ public class Bird {
     private ImageIcon bird;
     private int x;
     private int y;
-    private boolean muerto;
+    private boolean muerto = false;
     private final int WIDTH=358;
     private final int HEIGHT=259;
      
     public Bird(){              
-        bird = new ImageIcon("quetzal.png");        
+        bird = new ImageIcon("quetzal.png");     
     }
-
+    
     public ImageIcon getBird() {
         return bird;
     }
@@ -48,7 +48,10 @@ public class Bird {
     public void Matar() {
         this.muerto = true;
     }
-
+    
+    public void Vivir(){
+        this.muerto = false;
+    }
 
     public Rectangle getRectangle() {
         return rectangle;

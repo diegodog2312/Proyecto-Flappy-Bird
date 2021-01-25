@@ -27,8 +27,9 @@ public class Controller {
     public void initController(){
         MouseListener ml = new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {                               
-                screen.volar(bird);                                  
+            public void mouseClicked(MouseEvent e) { 
+                screen.volar(bird);  
+                //screen.caer(bird);
             }
 
             @Override
@@ -55,14 +56,23 @@ public class Controller {
     
     public void jugar() throws InterruptedException{
         while(bird.getY()!=screen.getWidth()){
-            screen.caer(bird);           
-            screen.moverse(tree1, tree2);
-            Thread.sleep(50);
-            if(colision()){
-                System.out.println("Choco");
-            }else{
-                System.out.println("No choco");
-            }            
+            bird.Vivir();
+            while(!bird.isMuerto()){
+                screen.caer(bird);           
+                screen.moverse(tree1, tree2);
+                Thread.sleep(50);
+                if(colision()){
+                    System.out.println("Choco");
+                    bird.Matar();
+                    //System.out.println(bird.isMuerto());
+                }else{
+                    System.out.println("No choco");
+                    bird.Vivir();
+                //System.out.println(bird.isMuerto());
+                }   
+            }
+            System.out.println("Murió");
+            System.exit(0);
         }
     }
     

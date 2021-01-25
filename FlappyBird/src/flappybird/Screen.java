@@ -76,10 +76,10 @@ public class Screen extends JFrame{
     }
     
     public void volar(Bird bird){
-        bird.setY(bird.getY()-5);        
-        pajaro.setLocation(bird.getX(), bird.getY());   
-        bird.setRectangle(pajaro.getBounds());
-
+           System.out.println("Volandoooo ");
+           bird.setY(bird.getY()-5);  
+           pajaro.setLocation(bird.getX(), bird.getY());   
+           bird.setRectangle(pajaro.getBounds());
     }
     
     public void caer(Bird bird){
