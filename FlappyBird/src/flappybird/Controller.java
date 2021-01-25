@@ -55,7 +55,7 @@ public class Controller {
     
     public void jugar() throws InterruptedException{
         while(bird.getY()!=screen.getWidth()){
-            bird.Vivir();
+            
             while(!bird.isMuerto()){
                 screen.caer(bird);           
                 screen.moverse(tree1, tree2);
@@ -65,7 +65,7 @@ public class Controller {
                     bird.Matar();                    
                 }else{
                     System.out.println("No choco");
-                    bird.Vivir();                
+                            
                 }   
             }
             System.out.println("Murió");

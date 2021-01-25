@@ -2,14 +2,13 @@
 package flappybird;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 /**
  *
  * @author diegoignacionunezhernandez
  */
-public class Screen extends JFrame{   
+public class Screen extends JFrame{
     public JPanel panel;
     private JLabel pajaro = new JLabel();  
     private JLabel arbol1 = new JLabel();   
@@ -23,8 +22,7 @@ public class Screen extends JFrame{
         setTitle("Flappy Quetzal");
         setLocationRelativeTo(null);
         setResizable(false);                  
-        setDefaultCloseOperation(EXIT_ON_CLOSE);        
-        
+        setDefaultCloseOperation(EXIT_ON_CLOSE);                
     }
     
     public void colocarComponentes(){
@@ -43,7 +41,7 @@ public class Screen extends JFrame{
         ImageIcon background = new ImageIcon("background.jpg");
         JLabel fondo = new JLabel();
         fondo.setSize(WIDTH, HEIGHT);       
-        //fondo.setIcon(background);       
+        fondo.setIcon(background);       
         panel.add(fondo);
                
     }
@@ -54,7 +52,7 @@ public class Screen extends JFrame{
     
     public void colocarPersonajes(Bird bird, Arbol tree1, Arbol tree2){                                    
         pajaro.setBounds(50, 50, 100, 100);                
-        pajaro.setIcon(new ImageIcon(bird.getBird().getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));        
+        pajaro.setIcon(new ImageIcon(bird.getBird().getImage().getScaledInstance(100, 100, Image.SCALE_SMOOTH)));        
         panel.add(pajaro);  
         bird.setX(50);
         bird.setY(50);
