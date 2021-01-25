@@ -7,43 +7,32 @@ import javax.swing.*;
  * @author diegoignacionunezhernandez
  */
 public class Arbol {
-    private Image tree;
+    private ImageIcon tree;
     private int x;
     private int y;
     private int vx;
     private int xt;
     private int vy;
-    private int height;
-    private int width;
+    private Rectangle rectangle;
+    private final int HEIGHT=632;
+    private final int WIDTH=632;
 
-    public Arbol(String imagen, int vx, int xt, int vy, int height, int width) {
-        this.tree = tree;
-        this.vx = vx;
-        this.xt = xt;       
-        this.vy = vy;
-        this.height = height;
-        this.width = width;
-        this.tree = new ImageIcon(this.getClass().getResource(imagen)).getImage();
-        this.tree = this.tree.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-    }
-    
-    public void moverse(){
-        setX(getX()+getVx());      
-    }
-    
-    public void dibuja(Graphics g){      
-        g.drawImage(tree,getX(),getY(),getXt(),getXt(),null);
+    public Arbol() {      
+        tree = new ImageIcon("tree.png");
     }
     
     
-    public Image getTree() {
+    public ImageIcon getTree() {
         return tree;
     }
 
-    public Rectangle getRectangulo() {
-        return (new Rectangle(x,y,width,height));
+    public Rectangle getRectangle() {
+        return rectangle;
     }
 
+    public void setRectangle(Rectangle rectangle){
+        this.rectangle = rectangle;                              
+    }
     public int getX() {
         return x;
     }
@@ -85,20 +74,11 @@ public class Arbol {
     }
 
     public int getHeight() {
-        return height;
+        return HEIGHT;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
 
     public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-                            
-    
+        return WIDTH;
+    }                             
 }

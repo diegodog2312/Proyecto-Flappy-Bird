@@ -12,73 +12,53 @@ import javax.swing.ImageIcon;
  *
  * @author Sofia
  */
-public class Bird {
-    private boolean bool; 
+public class Bird {    
     private Rectangle rectangle;
-    private Image bird;
+    private ImageIcon bird;
     private int x;
     private int y;
-    private int fall;
-    private int width;
-    private int height;
+    private boolean muerto;
+    private final int WIDTH=358;
+    private final int HEIGHT=259;
      
-    public Bird(String name, int x, int y, int width, int height){
-        bird = new ImageIcon(this.getClass().getResource(name)).getImage();
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
-        this.bird =  this.bird.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-    }
-    
-    
-    public void fly(){
-        fall = 
+    public Bird(){              
+        bird = new ImageIcon("quetzal.png");        
     }
 
+    public ImageIcon getBird() {
+        return bird;
+    }
+
+    public void setBird(ImageIcon bird) {
+        this.bird = bird;
+    }
+    
     public int getWidth() {
-        return width;
+        return WIDTH;
     }
 
     public int getHeight() {
-        return height;
+        return HEIGHT;
     }
-    
-    
-    public int getFall() {
-        return fall;
-    }
-
-    public void setFall(int fall) {
-        this.fall = fall;
+        
+    public boolean isMuerto() {
+        return muerto;
     }
 
-    
-    public boolean isBool() {
-        return bool;
+    public void Matar() {
+        this.muerto = true;
     }
 
-    public void setBool(boolean bool) {
-        this.bool = bool;
-    }
 
     public Rectangle getRectangle() {
-        return (new Rectangle(x, y, width, height));
+        return rectangle;
     }
 
     public void setRectangle(Rectangle rectangle) {
         this.rectangle = rectangle;
     }
 
-    public Image getBird() {
-        return bird;
-    }
-
-    public void setBird(Image bird) {
-        this.bird = bird;
-    }
-
-    public int getX() {
+    public int getX() {        
         return x;
     }
 
