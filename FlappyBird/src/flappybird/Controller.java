@@ -22,14 +22,13 @@ public class Controller {
         screen.colocarPersonajes(bird, tree1, tree2);
         screen.setVisible(true);
         initController();
-    }    
+    }
     
     public void initController(){
         MouseListener ml = new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) { 
                 screen.volar(bird);  
-                //screen.caer(bird);
             }
 
             @Override
@@ -63,16 +62,14 @@ public class Controller {
                 Thread.sleep(50);
                 if(colision()){
                     System.out.println("Choco");
-                    bird.Matar();
-                    //System.out.println(bird.isMuerto());
+                    bird.Matar();                    
                 }else{
                     System.out.println("No choco");
-                    bird.Vivir();
-                //System.out.println(bird.isMuerto());
+                    bird.Vivir();                
                 }   
             }
             System.out.println("Murió");
-            System.exit(0);
+            //System.exit(0);
         }
     }
     

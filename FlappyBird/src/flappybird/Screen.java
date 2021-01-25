@@ -44,7 +44,7 @@ public class Screen extends JFrame{
         JLabel fondo = new JLabel();
         fondo.setSize(WIDTH, HEIGHT);       
         //fondo.setIcon(background);       
-        panel.add(fondo);           
+        panel.add(fondo);
                
     }
     
@@ -60,24 +60,23 @@ public class Screen extends JFrame{
         bird.setY(50);
         bird.setRectangle(pajaro.getBounds());
          
-        arbol1.setBounds(50, 200, 100, 100);                
+        arbol1.setBounds(50, 200, 50, 50);                
         arbol1.setIcon(new ImageIcon(tree1.getTree().getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));        
         panel.add(arbol1);  
         tree1.setX(50);
         tree1.setY(200);
         tree1.setRectangle(arbol1.getBounds());        
                      
-        arbol2.setBounds(100, 200, 100, 100);                
+        arbol2.setBounds(100, 200, 50, 50);                
         arbol2.setIcon(new ImageIcon(tree2.getTree().getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));        
         panel.add(arbol2);  
-        tree2.setX(50);
+        tree2.setX(100);
         tree2.setY(200);
         tree2.setRectangle(arbol1.getBounds()); 
     }
     
-    public void volar(Bird bird){
-           System.out.println("Volandoooo ");
-           bird.setY(bird.getY()-5);  
+    public void volar(Bird bird){           
+           bird.setY(bird.getY()-10);
            pajaro.setLocation(bird.getX(), bird.getY());   
            bird.setRectangle(pajaro.getBounds());
     }
