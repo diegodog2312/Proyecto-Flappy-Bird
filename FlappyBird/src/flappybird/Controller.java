@@ -2,7 +2,7 @@ package flappybird;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.*;
+
 /**
  *
  * @author diegoignacionunezhernandez
@@ -13,16 +13,21 @@ public class Controller {
     private Arbol tree2;
     private Screen screen;
 
-    public Controller(Bird bird, Arbol tree1, Arbol tree2, Screen screen) {
+    public Controller(Bird bird, Arbol tree1, Arbol tree2, Screen screen,boolean mostrar) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
         this.screen = screen;
         screen.colocarComponentes();
         screen.colocarPersonajes(bird, tree1, tree2);
-        screen.setVisible(true);
+        screen.setVisible(mostrar);
         initController();
     }
+    
+    public void mostrar(){
+        screen.setVisible(true);
+    }
+    
     
     public void initController(){
         MouseListener ml = new MouseListener() {
@@ -55,19 +60,17 @@ public class Controller {
     
     public void jugar() throws InterruptedException{
         while(bird.getY()!=screen.getWidth()){
-            
+            bird.Vivir();
             while(!bird.isMuerto()){
-                screen.caer(bird);           
-               screen.moverse(tree1, tree2);
+                screen.caer(bird);
+                screen.moverse(tree1, tree2);
                 Thread.sleep(50);
-                if(colision(bird.getRectangle(),tree1.getRectangle())){
+                if(colision()){
                     System.out.println("Choco");
-                    //bird.Matar(); 
-                    //Thread.sleep(1000);
-                               
+                    bird.Matar();
                 }else{
                     System.out.println("No choco");
-                            
+                    bird.Vivir();
                 }   
             }
             System.out.println("Murió");
@@ -75,17 +78,8 @@ public class Controller {
         }
     }
     
-    public boolean collision(){
-       return bird.getRectangle().intersects(tree1.getRectangle()); 
-    }
-        
-    public boolean colision(Rectangle bird, Rectangle tree1){
-        //return bird.getRectangle().intersects(tree1.getRectangle());
-        if ((bird.getBounds()).intersects(tree1.getBounds())){
-            //sleep(1000);
-            return true;
-        } 
-        return false;
+    public boolean colision(){
+        return bird.getRectangle().intersects(tree1.getRectangle());
     }
     
     public Bird getBird() {
