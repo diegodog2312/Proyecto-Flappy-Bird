@@ -2,7 +2,7 @@ package flappybird;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+import java.awt.*;
 /**
  *
  * @author diegoignacionunezhernandez
@@ -58,11 +58,13 @@ public class Controller {
             
             while(!bird.isMuerto()){
                 screen.caer(bird);           
-                screen.moverse(tree1, tree2);
+               screen.moverse(tree1, tree2);
                 Thread.sleep(50);
-                if(colision()){
+                if(colision(bird.getRectangle(),tree1.getRectangle())){
                     System.out.println("Choco");
-                    bird.Matar();                    
+                    //bird.Matar(); 
+                    //Thread.sleep(1000);
+                               
                 }else{
                     System.out.println("No choco");
                             
@@ -73,8 +75,17 @@ public class Controller {
         }
     }
     
-    public boolean colision(){
-        return bird.getRectangle().intersects(tree1.getRectangle());
+    public boolean collision(){
+       return bird.getRectangle().intersects(tree1.getRectangle()); 
+    }
+        
+    public boolean colision(Rectangle bird, Rectangle tree1){
+        //return bird.getRectangle().intersects(tree1.getRectangle());
+        if ((bird.getBounds()).intersects(tree1.getBounds())){
+            //sleep(1000);
+            return true;
+        } 
+        return false;
     }
     
     public Bird getBird() {
