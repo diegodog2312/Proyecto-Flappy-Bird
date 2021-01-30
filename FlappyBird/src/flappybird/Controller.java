@@ -9,23 +9,29 @@ import java.awt.event.MouseListener;
  */
 public class Controller {
     private Bird bird;
-    private Arbol tree1;
-    private Arbol tree2;
+    private Obstaculo tree1;
+    private Obstaculo tree2;
+    private Obstaculo nube1;
+    private Obstaculo nube2;
     private Screen screen;
 
-    public Controller(Bird bird, Arbol tree1, Arbol tree2, Screen screen,boolean mostrar) {
+    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen,boolean mostrar) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
+        this.nube1 = nube1;
+        this.nube2 = nube2;
         this.screen = screen;
         screen.colocarComponentes();
-        screen.colocarPersonajes(bird, tree1, tree2);
+        screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
         screen.setVisible(mostrar);
         initController();
     }
     
     public void mostrar(){
+        //screen.setVisible(true);
         screen.setVisible(true);
+        
     }
     
     
@@ -34,6 +40,7 @@ public class Controller {
             @Override
             public void mouseClicked(MouseEvent e) { 
                 screen.volar(bird);  
+                //jugar();
             }
 
             @Override
@@ -59,21 +66,34 @@ public class Controller {
     }          
     
     public void jugar() throws InterruptedException{
-        while(bird.getY()!=screen.getWidth()){
-            bird.Vivir();
-            while(!bird.isMuerto()){
-                screen.caer(bird);
-                screen.moverse(tree1, tree2);
+        //screen.colocarComponentes();
+        //screen.colocarPersonajes(bird, tree1, tree2);
+        //screen.setVisible(true);
+        while(this.bird.getY()!=screen.getWidth()){
+            screen.setVisible(true);
+            //caer(bird); 
+            //screen.moverArboles(tree1, tree2);
+            screen.moverNubes(nube1, nube2);
+            System.out.println("INICIO");
+            //while(!bird.isMuerto()){
+            while(true){
+                //System.out.println("MOVER");
+                screen.caer(bird);           
+                //screen.moverse(tree1, tree2);
+               screen.moverArboles(tree1, tree2);
+            screen.moverNubes(nube1, nube2);
                 Thread.sleep(50);
                 if(colision()){
-                    System.out.println("Choco");
-                    bird.Matar();
+                   // System.out.println("Choco");
+                    //bird.Matar(); 
+                    //Thread.sleep(1000);
+                               
                 }else{
-                    System.out.println("No choco");
-                    bird.Vivir();
+                   // System.out.println("No choco");
+                            
                 }   
             }
-            System.out.println("Murió");
+            //System.out.println("Murió");
             //System.exit(0);
         }
     }
@@ -90,19 +110,19 @@ public class Controller {
         this.bird = bird;
     }
 
-    public Arbol getTree1() {
+    public Obstaculo getTree1() {
         return tree1;
     }
 
-    public void setTree1(Arbol tree1) {
+    public void setTree1(Obstaculo tree1) {
         this.tree1 = tree1;
     }
 
-    public Arbol getTree2() {
+    public Obstaculo getTree2() {
         return tree2;
     }
 
-    public void setTree2(Arbol tree2) {
+    public void setTree2(Obstaculo tree2) {
         this.tree2 = tree2;
     }
 

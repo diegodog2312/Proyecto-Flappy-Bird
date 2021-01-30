@@ -12,11 +12,13 @@ public class Main {
      */
     public static void main(String[] args) throws InterruptedException {        
         Bird bird = new Bird();
-        Arbol arbol1 = new Arbol();
-        Arbol arbol2 = new Arbol();
+        Obstaculo arbol1 = new Obstaculo(0);
+        Obstaculo arbol2 = new Obstaculo(0);
+        Obstaculo nube1 = new Obstaculo(1);
+        Obstaculo nube2 = new Obstaculo(1);
         Screen screen = new Screen();
         
-        JFrame frame = new JFrame("Flappy Quetzal");
+        /*JFrame frame = new JFrame("Flappy Quetzal");
         frame.setSize(518,724);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
@@ -25,7 +27,9 @@ public class Main {
         frame.add(new NewJPanel(bird, arbol1, arbol2, screen),BorderLayout.CENTER);
         //frame.setUndecorated(true);
         frame.setVisible(true);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));*/
+        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,true);
+        controller.jugar();
         
     }    
 }

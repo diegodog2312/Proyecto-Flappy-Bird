@@ -6,20 +6,31 @@ import javax.swing.*;
  *
  * @author diegoignacionunezhernandez
  */
-public class Arbol {
-    private ImageIcon tree;
+public class Obstaculo {
+    private ImageIcon obs;
     private int x;
     private int y;
     private Rectangle rectangle;
-    private final int HEIGHT=632;
-    private final int WIDTH=632;
+    private final int HEIGHT;
+    private final int WIDTH;
 
-    public Arbol() {      
-        tree = new ImageIcon("tree.png");
-    }    
+    /*public Arbol() {      
+        tree = new ImageIcon("tree0.png");
+    }    */
     
-    public ImageIcon getTree() {
-        return tree;
+    public Obstaculo(int n) {  
+        if(n == 0)
+           obs = new ImageIcon("tree0.png"); 
+        
+        else
+           obs = new ImageIcon("nube0.png");
+        
+        WIDTH = obs.getIconWidth();
+        HEIGHT = obs.getIconHeight();
+    }  
+    
+    public ImageIcon getObstaculo() {
+        return obs;
     }
 
     public Rectangle getRectangle() {

@@ -14,8 +14,8 @@ public class NewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    public NewJPanel(Bird bird, Arbol arbol1, Arbol arbol2, Screen screen) {
-        this.controller = new Controller(bird, arbol1, arbol2, screen,false);
+    public NewJPanel(Bird bird, Obstaculo arbol1, Obstaculo arbol2, Screen screen) {
+        this.controller = new Controller(bird, arbol1, arbol2, arbol1, arbol2, screen,false);
         initComponents();
     }
 
@@ -80,6 +80,13 @@ public class NewJPanel extends javax.swing.JPanel {
     private void botonNuevoJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNuevoJuegoActionPerformed
         
         controller.mostrar();
+        
+        /*try{
+            controller.jugar();
+        }
+        catch(Exception e){
+            
+        }*/
     }//GEN-LAST:event_botonNuevoJuegoActionPerformed
 
 
