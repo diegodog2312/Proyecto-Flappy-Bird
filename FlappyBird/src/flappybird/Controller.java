@@ -14,6 +14,8 @@ public class Controller {
     private Obstaculo nube1;
     private Obstaculo nube2;
     private Screen screen;
+    private int puntaje = 0;
+    boolean contado = true;
 
     public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen,boolean mostrar) {
         this.bird = bird;
@@ -22,8 +24,8 @@ public class Controller {
         this.nube1 = nube1;
         this.nube2 = nube2;
         this.screen = screen;
-        screen.colocarComponentes();
-        screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
+        //screen.colocarComponentes();
+        //screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
         screen.setVisible(mostrar);
         initController();
     }
@@ -66,41 +68,79 @@ public class Controller {
     }          
     
     public void jugar() throws InterruptedException{
-        //screen.colocarComponentes();
-        //screen.colocarPersonajes(bird, tree1, tree2);
-        //screen.setVisible(true);
-        while(this.bird.getY()!=screen.getWidth()){
-            screen.setVisible(true);
-            //caer(bird); 
-            //screen.moverArboles(tree1, tree2);
-            screen.moverNubes(nube1, nube2);
-            System.out.println("INICIO");
-            //while(!bird.isMuerto()){
-            while(true){
-                //System.out.println("MOVER");
+        screen.colocarComponentes();
+        screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, puntaje);
+        screen.setVisible(true);
+        //while(this.bird.getY()!=screen.getWidth()){
+            
+            // valor prueba 
+            while(puntaje<5){
                 screen.caer(bird);           
-                //screen.moverse(tree1, tree2);
-               screen.moverArboles(tree1, tree2);
-            screen.moverNubes(nube1, nube2);
+                screen.moverArboles(tree1, tree2);
+                screen.moverNubes(nube1, nube2);
                 Thread.sleep(50);
                 if(colision()){
-                   // System.out.println("Choco");
+                  System.out.println("Choco");
                     //bird.Matar(); 
                     //Thread.sleep(1000);
                                
                 }else{
-                   // System.out.println("No choco");
+                   System.out.println("No choco");
+                    // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
+                    if(tree1.getX()+40<= bird.getX() & contado){
+                       puntaje++;
+                       screen.sumarPunto(puntaje);
+                       contado = false;
+                    }
+                    
+                    // si todavia no se cuenta el arbol 2, suma un punto por haberlo pasado
+                    if(tree2.getX()+40<= bird.getX() & !contado){
+                       puntaje++;
+                       screen.sumarPunto(puntaje);
+                       contado = true;
+                    }
                             
                 }   
             }
-            //System.out.println("Murió");
-            //System.exit(0);
-        }
+        //}
+        puntaje(puntaje);
     }
     
     public boolean colision(){
-        return bird.getRectangle().intersects(tree1.getRectangle());
+       //System.out.println("COLISION CON ARBOL =   "+collisionA()); 
+       //System.out.println("COLISION CON NUBE =   "+collisionB()); 
+       
+       // si choca con alguno regresa verdadero
+       if(collisionA() || collisionB())
+           return true;
+       return false;
     }
+    
+    public boolean collisionA(){
+        if(bird.getRectangle().intersects(tree1.getRectangle()) || bird.getRectangle().intersects(tree2.getRectangle()))
+            return true;
+        return false;
+    }
+    
+    public boolean collisionB(){
+        if(bird.getRectangle().intersects(nube1.getRectangle()) || bird.getRectangle().intersects(nube2.getRectangle()))
+            return true;
+        return false;
+    }
+    
+    
+    public void puntaje(int nuevoPuntaje){
+       Scores scores = new Scores();
+       ScoresFile scoresFile = new ScoresFile();
+       scoresFile.cargarPuntaje(scores);
+       Score score = new Score(nuevoPuntaje);
+       scores.anadirPuntaje(score);
+       System.out.println(scores.toString());
+       scoresFile.guardarPuntos(scores);
+    }
+    
+    
+    
     
     public Bird getBird() {
         return bird;

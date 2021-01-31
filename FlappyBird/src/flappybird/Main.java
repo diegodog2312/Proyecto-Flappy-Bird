@@ -17,19 +17,19 @@ public class Main {
         Obstaculo nube1 = new Obstaculo(1);
         Obstaculo nube2 = new Obstaculo(1);
         Screen screen = new Screen();
-        
+        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,true);
+        controller.jugar();
         /*JFrame frame = new JFrame("Flappy Quetzal");
         frame.setSize(518,724);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
         frame.setLayout(new CardLayout(0,0));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(new NewJPanel(bird, arbol1, arbol2, screen),BorderLayout.CENTER);
+        frame.add(new NewJPanel(controller),BorderLayout.CENTER);
         //frame.setUndecorated(true);
         frame.setVisible(true);
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));*/
-        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,true);
-        controller.jugar();
+        
         
     }    
 }

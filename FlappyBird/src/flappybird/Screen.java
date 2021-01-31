@@ -24,7 +24,7 @@ public class Screen extends JFrame{
     private JLabel nube1 = new JLabel();   
     private JLabel nube2 = new JLabel();
     private JLabel fondo = new JLabel();
-    private JLabel fondo1 = new JLabel();
+    private JLabel puntaje = new JLabel();
     private JLayeredPane layeredPane = new JLayeredPane();
     
     private final int HEIGHT=724;//((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight())/2;
@@ -67,21 +67,21 @@ public class Screen extends JFrame{
         
     }
     
-    public void colocarPersonajes(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2){                                    
+    public void colocarPersonajes(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){                                    
         pajaro = new JLabel(new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH))) ;
         pajaro.setBounds(0, 0, 85, 85);
         layeredPane.add(pajaro, new Integer(4));
         bird.setX(50);
         bird.setY(50);
         bird.setRectangle(pajaro.getBounds());
-       
         
         arbol1 = new JLabel(new ImageIcon(tree1.getObstaculo().getImage().getScaledInstance(250, 420, Image.SCALE_SMOOTH))) ;       
-        arbol1.setBounds(0, 0, 250, 420);   
+        arbol1.setBounds(WIDTH, 270, 250, 420); 
         layeredPane.add(arbol1, new Integer(3));
         tree1.setX(WIDTH);
         tree1.setY(270);
-        tree1.setRectangle(arbol1.getBounds());          
+        tree1.setRectangle(arbol1.getBounds());  
+        
                
         arbol2 = new JLabel(new ImageIcon(tree2.getObstaculo().getImage().getScaledInstance(250, 420, Image.SCALE_SMOOTH)))   ;    
         arbol2.setBounds(0, 0, 250, 420);   
@@ -90,12 +90,13 @@ public class Screen extends JFrame{
         tree2.setY(560);
         tree2.setRectangle(arbol2.getBounds());
         
+        
         nube1 = new JLabel(new ImageIcon(cloud1.getObstaculo().getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH))) ;       
         nube1.setBounds(0, 0, 90, 90);  
         layeredPane.add(nube1, new Integer(3));
         cloud1.setX(tree1.getX()+65);
         cloud1.setY(-100);
-        cloud1.setRectangle(nube1.getBounds());      
+        cloud1.setRectangle(nube1.getBounds());     
                               
         nube2 = new JLabel(new ImageIcon(cloud2.getObstaculo().getImage().getScaledInstance(120, 90, Image.SCALE_SMOOTH)))   ;    
         nube2.setBounds(0, 0, 120, 90); 
@@ -104,8 +105,25 @@ public class Screen extends JFrame{
         cloud2.setY(-200);
         cloud2.setRectangle(nube2.getBounds());
         
+        puntaje = new JLabel(String.valueOf(score));
+        Color color = new Color(229,255,205);
+        puntaje.setBounds(WIDTH/2,65,30,30);
+        puntaje.setFont(new Font("Serif", Font.BOLD, 25));
+        puntaje.setForeground(color);
+        layeredPane.add(puntaje, new Integer(5));
+        
+        
+        // temporal mostrar rectángulos para ver colisiones
+        pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
+        arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
+        arbol2.setBorder(BorderFactory.createLineBorder(Color.RED));
+        nube1.setBorder(BorderFactory.createLineBorder(Color.RED));
+        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));
     }
     
+    public void sumarPunto(int score){
+        puntaje.setText(String.valueOf(score));
+    }
     public void volar(Bird bird){           
            bird.setY(bird.getY()-50);
            bird.setX(bird.getX());
@@ -141,27 +159,27 @@ public class Screen extends JFrame{
         arbol1.setLocation(tree1.getX(), tree1.getY());
         
         tree2.setX(tree2.getX()-20);
-        arbol2.setLocation(tree2.getX(), tree2.getY());                       
+        arbol2.setLocation(tree2.getX(), tree2.getY());    
     }
     
     public void moverNubes(Obstaculo cloud1, Obstaculo cloud2){
         if(cloud1.getX()<=-arbol1.getWidth()){
             cloud1.setX(WIDTH+arbol1.getWidth());
-            cloud1.setY(arbol1.getY()-200);
-            nube2.setLocation(cloud1.getX(), cloud1.getY());
+            cloud1.setY(arbol1.getY()-300);
+            nube1.setLocation(cloud1.getX(), cloud1.getY());
         }
         
         if(cloud2.getX()<=-arbol2.getWidth()){
             cloud2.setX(WIDTH+arbol2.getWidth());
-            cloud2.setY(arbol2.getY()-200);
-            nube1.setLocation(cloud2.getX(), cloud2.getY());
+            cloud2.setY(arbol2.getY()-300);
+            nube2.setLocation(cloud2.getX(), cloud2.getY());
         }
         
         cloud1.setX(cloud1.getX()-20);
         nube1.setLocation(cloud1.getX(), cloud1.getY());
         
         cloud2.setX(cloud2.getX()-20);
-        nube2.setLocation(cloud2.getX(), cloud2.getY());                       
+        nube2.setLocation(cloud2.getX(), cloud2.getY());   
     }
 }
 //

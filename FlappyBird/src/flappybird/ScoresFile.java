@@ -1,3 +1,5 @@
+
+package flappybird;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;

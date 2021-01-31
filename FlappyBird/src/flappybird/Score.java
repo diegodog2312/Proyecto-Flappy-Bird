@@ -1,3 +1,4 @@
+package flappybird;
 import java.io.*;
 
 public class Score implements Comparable<Score>, Serializable {

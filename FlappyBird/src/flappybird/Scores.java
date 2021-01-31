@@ -1,6 +1,6 @@
+package flappybird;
 import java.util.*;
 import java.text.*;
-
 public class Scores  {
 
     public static final int MAX_NUM_PUNTAJES = 3;
