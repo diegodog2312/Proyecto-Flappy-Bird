@@ -54,7 +54,7 @@ public class Screen extends JFrame{
     
     
     private void colocarLabels(){
-            ImageIcon bg = new ImageIcon("background.jpg");
+            ImageIcon bg = new ImageIcon("back10.jpg");
             fondo = new JLabel();
             fondo.setIcon(bg);
             fondo.setSize(WIDTH, HEIGHT);
@@ -91,8 +91,8 @@ public class Screen extends JFrame{
         tree2.setRectangle(arbol2.getBounds());
         
         
-        nube1 = new JLabel(new ImageIcon(cloud1.getObstaculo().getImage().getScaledInstance(90, 90, Image.SCALE_SMOOTH))) ;       
-        nube1.setBounds(0, 0, 90, 90);  
+        nube1 = new JLabel(new ImageIcon(cloud1.getObstaculo().getImage().getScaledInstance(120, 90, Image.SCALE_SMOOTH))) ;       
+        nube1.setBounds(0, 0, 120, 90);  
         layeredPane.add(nube1, new Integer(3));
         cloud1.setX(tree1.getX()+65);
         cloud1.setY(-100);
@@ -114,11 +114,11 @@ public class Screen extends JFrame{
         
         
         // temporal mostrar rectángulos para ver colisiones
-        pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
+        /*pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol2.setBorder(BorderFactory.createLineBorder(Color.RED));
         nube1.setBorder(BorderFactory.createLineBorder(Color.RED));
-        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));
+        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));*/
     }
     
     public void sumarPunto(int score){

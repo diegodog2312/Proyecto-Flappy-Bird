@@ -23,7 +23,7 @@ public class Obstaculo {
            obs = new ImageIcon("tree0.png"); 
         
         else
-           obs = new ImageIcon("nube0.png");
+           obs = new ImageIcon("nube2.png");
         
         WIDTH = obs.getIconWidth();
         HEIGHT = obs.getIconHeight();
