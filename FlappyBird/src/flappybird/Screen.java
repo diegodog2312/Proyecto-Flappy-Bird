@@ -41,8 +41,7 @@ public class Screen extends JFrame{
         
     }
     
-    public void colocarComponentes(){
-        
+    public void colocarComponentes(){     
         colocarPaneles();
         colocarLabels();
         colocarBotones();
@@ -125,7 +124,7 @@ public class Screen extends JFrame{
         puntaje.setText(String.valueOf(score));
     }
     public void volar(Bird bird){           
-           bird.setY(bird.getY()-50);
+           bird.setY(bird.getY()-60);
            bird.setX(bird.getX());
            pajaro.setLocation(bird.getX(), bird.getY());   
            bird.setRectangle(pajaro.getBounds());
@@ -147,19 +146,23 @@ public class Screen extends JFrame{
             tree1.setX(WIDTH+arbol1.getWidth());
             tree1.setY(randomTree);
             arbol1.setLocation(tree1.getX(), tree1.getY());
+            tree1.setRectangle(arbol1.getBounds());
         }
         
        if(tree2.getX()<=-arbol2.getWidth()){
             tree2.setX(WIDTH+arbol1.getWidth());
             tree2.setY(randomTree);
             arbol2.setLocation(tree2.getX(), tree2.getY());
+            tree2.setRectangle(arbol2.getBounds());
         }
         
         tree1.setX(tree1.getX()-20);
         arbol1.setLocation(tree1.getX(), tree1.getY());
+        tree1.setRectangle(arbol1.getBounds());
         
         tree2.setX(tree2.getX()-20);
-        arbol2.setLocation(tree2.getX(), tree2.getY());    
+        arbol2.setLocation(tree2.getX(), tree2.getY());
+        tree2.setRectangle(arbol2.getBounds());
     }
     
     public void moverNubes(Obstaculo cloud1, Obstaculo cloud2){
@@ -167,19 +170,23 @@ public class Screen extends JFrame{
             cloud1.setX(WIDTH+arbol1.getWidth());
             cloud1.setY(arbol1.getY()-300);
             nube1.setLocation(cloud1.getX(), cloud1.getY());
+            cloud1.setRectangle(nube1.getBounds());
         }
         
         if(cloud2.getX()<=-arbol2.getWidth()){
             cloud2.setX(WIDTH+arbol2.getWidth());
             cloud2.setY(arbol2.getY()-300);
             nube2.setLocation(cloud2.getX(), cloud2.getY());
+            cloud2.setRectangle(nube2.getBounds());
         }
         
         cloud1.setX(cloud1.getX()-20);
         nube1.setLocation(cloud1.getX(), cloud1.getY());
+        cloud1.setRectangle(nube1.getBounds());
         
         cloud2.setX(cloud2.getX()-20);
         nube2.setLocation(cloud2.getX(), cloud2.getY());   
+        cloud2.setRectangle(nube2.getBounds());
     }
 }
 //

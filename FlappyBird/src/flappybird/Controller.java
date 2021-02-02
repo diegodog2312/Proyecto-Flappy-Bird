@@ -2,11 +2,8 @@ package flappybird;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 
-/**
- *
- * @author diegoignacionunezhernandez
- */
 public class Controller {
     private Bird bird;
     private Obstaculo tree1;
@@ -17,7 +14,7 @@ public class Controller {
     private int puntaje = 0;
     boolean contado = true;
 
-    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen,boolean mostrar) {
+    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, boolean mostrar) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
@@ -59,13 +56,12 @@ public class Controller {
 
             @Override
             public void mouseExited(MouseEvent e) {
-            }
+            }                                
         };
         
         screen.addMouseListener(ml);
-        
-        
-    }          
+                
+    }
     
     public void jugar() throws InterruptedException{
         screen.colocarComponentes();
@@ -74,20 +70,20 @@ public class Controller {
         //while(this.bird.getY()!=screen.getWidth()){
             
             // valor prueba 
-            while(puntaje<5){
+            while(!bird.isMuerto()){
                 screen.caer(bird);           
                 screen.moverArboles(tree1, tree2);
                 screen.moverNubes(nube1, nube2);
-                Thread.sleep(50);
+                Thread.sleep(80);
                 if(colision()){
                   System.out.println("Choco");
-                    //bird.Matar(); 
+                    bird.Matar(); 
                     //Thread.sleep(1000);
                                
                 }else{
                    System.out.println("No choco");
                     // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
-                    if(tree1.getX()+40<= bird.getX() & contado){
+                    if(tree1.getX() +40<= bird.getX() & contado){
                        puntaje++;
                        screen.sumarPunto(puntaje);
                        contado = false;
@@ -107,12 +103,13 @@ public class Controller {
     }
     
     public boolean colision(){
-       //System.out.println("COLISION CON ARBOL =   "+collisionA()); 
-       //System.out.println("COLISION CON NUBE =   "+collisionB()); 
        
        // si choca con alguno regresa verdadero
-       if(collisionA() || collisionB())
+       if(collisionA() || collisionB()){
+           //JOptionPane.showMessageDialog(screen, "Choco");
            return true;
+       }
+       //JOptionPane.showMessageDialog(screen, "No choco");
        return false;
     }
     

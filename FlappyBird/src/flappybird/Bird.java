@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package flappybird;
 
 import java.awt.*;
 import javax.swing.ImageIcon;
 
-/**
- *
- * @author Sofia
- */
 public class Bird {    
     private Rectangle rectangle;
     private ImageIcon bird;
@@ -22,7 +13,8 @@ public class Bird {
     private final int HEIGHT=259;
      
     public Bird(){              
-        bird = new ImageIcon("quetzal.png");     
+        bird = new ImageIcon("quetzal.png");   
+        this.rectangle = new Rectangle(0, 0, 0, 0);
     }
     
     public ImageIcon getBird() {
@@ -58,7 +50,10 @@ public class Bird {
     }
 
     public void setRectangle(Rectangle rectangle) {
-        this.rectangle = rectangle;
+        this.rectangle.height = rectangle.height-20;
+        this.rectangle.width = rectangle.width-20;
+        this.rectangle.x = rectangle.x;
+        this.rectangle.y = rectangle.y;
     }
 
     public int getX() {        
