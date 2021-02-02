@@ -123,14 +123,25 @@ public class Screen extends JFrame{
     public void sumarPunto(int score){
         puntaje.setText(String.valueOf(score));
     }
-    public void volar(Bird bird){           
-           bird.setY(bird.getY()-60);
-           bird.setX(bird.getX());
-           pajaro.setLocation(bird.getX(), bird.getY());   
-           bird.setRectangle(pajaro.getBounds());
+    public void volar(Bird bird){
+        ImageIcon imagen = new ImageIcon("quetzal2.png");                         
+        bird.setBird(imagen);
+        imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
+        pajaro.setIcon(imagen);
+        
+        bird.setY(bird.getY()-60);
+        bird.setX(bird.getX());
+        pajaro.setLocation(bird.getX(), bird.getY());   
+        bird.setRectangle(pajaro.getBounds());
     }
     
     public void caer(Bird bird){
+        ImageIcon imagen = new ImageIcon("quetzal.png");         
+        bird.setBird(imagen);        
+        imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+        pajaro.setIcon(imagen);
+        
+        
         bird.setY(bird.getY()+10);
         bird.setX(bird.getX());
         pajaro.setLocation(bird.getX(), bird.getY());       
