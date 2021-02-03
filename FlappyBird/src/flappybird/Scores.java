@@ -60,7 +60,7 @@ public class Scores  {
         SimpleDateFormat fechaCorta=new SimpleDateFormat(strDateFormat);
         for(int i=0; i<=listaPuntajes.size()-1; i++) {
             Score puntuacion = listaPuntajes.get(i);
-            resultado += (i+1) +"  " + "  : " + puntuacion.getPuntos() + " pts\n";
+            resultado += (i+1)+ "  : " + puntuacion.getPuntos() + " pts\n";
         }
         return resultado;
     }

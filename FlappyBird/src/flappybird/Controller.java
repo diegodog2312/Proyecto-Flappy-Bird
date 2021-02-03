@@ -244,6 +244,7 @@ public class Controller {
      * @param nuevoPuntaje Puntaje obtenido durante la partida.
      * @return 
      */
+    
     public Scores puntaje(int nuevoPuntaje) {
         Scores scores = new Scores();
         ScoresFile scoresFile = new ScoresFile();
@@ -255,6 +256,7 @@ public class Controller {
         maxPuntaje = scores.maxScore();
         return scores;
     }
+    
 
     /**
      * Getter del quetzal.
@@ -297,6 +299,7 @@ public class Controller {
      *
      * @return Objeto tipo Obstaculo (tree2).
      */
+    
     public Obstaculo getTree2() {
         return tree2;
     }
