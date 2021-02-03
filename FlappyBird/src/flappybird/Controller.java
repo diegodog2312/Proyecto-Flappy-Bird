@@ -28,6 +28,7 @@ public class Controller {
     private Sonidos sonido;
     boolean contado = true;
     boolean running = true;
+    boolean show = true;
     private int maxPuntaje = 0;
 
     /**
@@ -91,7 +92,9 @@ public class Controller {
             start();           
             musica();            
         });
-
+        
+        screen.getInfoButton().addActionListener(e-> show = screen.showInfo(show));
+        
     }
 
     /**

@@ -25,6 +25,8 @@ public class Screen extends JFrame{
     private JLabel max;
     private JLabel puntaje;
     private JLabel puntajeFinal;
+    private JLabel info;
+    private JButton BInfo;
     private JButton Bplay;
     private JButton Brestart;
     private JButton BleaderBoard;
@@ -152,7 +154,22 @@ public class Screen extends JFrame{
         puntaje.setFont(new Font("Serif", Font.BOLD, 25));
         puntaje.setForeground(color);
         layeredPane.add(puntaje, new Integer(6));
-                
+        
+        ImageIcon imgIn = new ImageIcon("BInfo.png");     
+        BInfo = new JButton(new ImageIcon(imgIn.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH)));
+        BInfo.setBorder(BorderFactory.createEmptyBorder());
+        BInfo.setContentAreaFilled(false);
+        BInfo.setBounds(WIDTH-55, 5,35, 35);        
+        BInfo.setVisible(true);
+        layeredPane.add(BInfo, new Integer(6));
+        
+        ImageIcon imgI = new ImageIcon("WInfo.png");
+        info = new JLabel(new ImageIcon(imgI.getImage().getScaledInstance(190, 170, Image.SCALE_SMOOTH)));
+        info.setBounds(WIDTH, WIDTH-200, 190, 170);
+        info.setLocation(WIDTH-225,50);
+        info.setVisible(false);
+        layeredPane.add(info, new Integer(10));
+
         /*
         pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -171,6 +188,15 @@ public class Screen extends JFrame{
     public void sumarPunto(int score){
         puntos=score;
         puntaje.setText(String.valueOf(puntos));
+    }
+    
+    public boolean showInfo(boolean show){
+        info.setVisible(show);
+        return !show;
+    }
+    
+    public JButton getInfoButton(){
+        return BInfo;
     }
     
     public void mostrarPuntaje(int score, int maxPuntaje){
