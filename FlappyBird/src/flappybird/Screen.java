@@ -72,8 +72,10 @@ public class Screen extends JFrame{
         gif.setVisible(true);
         layeredPane.add(gif,new Integer(100));
         
-        titulo = new JLabel("FLAPPY QUETZAL");
-        titulo.setBounds(200, 10, 239, 184);
+        ImageIcon title = new ImageIcon("logo.png");
+        
+        titulo = new JLabel(new ImageIcon(title.getImage().getScaledInstance(300, 100, Image.SCALE_SMOOTH)));
+        titulo.setBounds(100, 40, 300,100);
         titulo.setVisible(true);
         layeredPane.add(titulo, new Integer(100));
     }   

@@ -89,7 +89,7 @@ public class Controller {
             screen.getTitulo().setVisible(false);
             screen.getGif().setVisible(false);
             start();           
-            //musica();            
+            musica();            
         });
 
     }
@@ -115,7 +115,7 @@ public class Controller {
                     }
                     if (colision()) {
                         //sonido.stop();
-                        //sonido.stop();
+                        sonido.stop();
                         bird.Matar();
                         sonido.reproducirSonido("muerte.wav");                        
                         gameOver();
