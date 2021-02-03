@@ -395,38 +395,40 @@ public class Screen extends JFrame{
     
      // coloca personajes en punto original 
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){
-        pajaro.setBounds(0, 0, 85, 85);
+        //pajaro.setBounds(0, 0, 85, 85);
         bird.setX(50);
         bird.setY(50);
-        bird.setRectangle(pajaro.getBounds());
         pajaro.setLocation(bird.getX(), bird.getY());
+        bird.setRectangle(pajaro.getBounds());
         
-        arbol1.setBounds(WIDTH, 270, 250, 420); 
+        
+        //arbol1.setBounds(WIDTH, 270, 250, 420); 
         tree1.setX(WIDTH);
-        tree1.setY(270);
-        tree1.setRectangle(arbol1.getBounds());  
+        tree1.setY(270); 
         arbol1.setLocation(tree1.getX(), tree1.getY());
+        tree1.setRectangle(arbol1.getBounds());
                
-        arbol2.setBounds(0, 0, 250, 420);   
+        //arbol2.setBounds(0, 0, 250, 420);   
         tree2.setX(WIDTH*2);
-        tree2.setY(560);
-        tree2.setRectangle(arbol2.getBounds());
+        tree2.setY(560);        
         arbol2.setLocation(tree2.getX(), tree2.getY());
+        tree2.setRectangle(arbol2.getBounds());
         
-        nube1.setBounds(0, 0, 120, 90);  
+        //nube1.setBounds(0, 0, 120, 90);  
         cloud1.setX(tree1.getX()+65);
         cloud1.setY(-100);
-        cloud1.setRectangle(nube1.getBounds());     
         nube1.setLocation(cloud1.getX(), cloud1.getY());   
+        cloud1.setRectangle(nube1.getBounds());
+        
             
-        nube2.setBounds(0, 0, 120, 90);
+        //nube2.setBounds(0, 0, 120, 90);
         cloud2.setX(tree2.getX()+65);
         cloud2.setY(-200);
-        cloud2.setRectangle(nube2.getBounds());
         nube2.setLocation(cloud2.getX(), cloud2.getY());
+        cloud2.setRectangle(nube2.getBounds());       
         
         
-        puntaje.setBounds(WIDTH/2,65,30,30);
+        //puntaje.setBounds(WIDTH/2,65,30,30);
         puntaje.setText(String.valueOf(score));
     } 
     

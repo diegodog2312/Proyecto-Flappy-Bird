@@ -116,8 +116,7 @@ public class Controller {
                         sonido.stop();
                         bird.Matar();
                         sonido.reproducirSonido("muerte.wav");                        
-                        gameOver();  
-                        
+                        gameOver();                                                  
                     } else {
                         // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
                         if (tree1.getX() + 40 <= bird.getX() & contado) {
@@ -154,11 +153,12 @@ public class Controller {
 
     public void gameOver() {
         screen.mostrarPuntaje(puntaje);
+        screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, puntaje);
         screen.getBrestart().addActionListener(e -> {
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
             screen.getBleaderBoard().setVisible(false);
-            screen.setOriginalPositions(bird, tree1, tree2, tree1, tree2, puntaje);
+           
             bird.Vivir();
             start();
         });
