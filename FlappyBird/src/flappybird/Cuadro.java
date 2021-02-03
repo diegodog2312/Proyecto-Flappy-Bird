@@ -2,19 +2,32 @@ package flappybird;
 
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.tools.Tool;
 
+/**
+ *@deprecated
+ * @author CHRISTIAN
+ */
 public class Cuadro extends javax.swing.JFrame {
 
     /**
      * Creates new form Cuadro
      */
-    public Cuadro() {
+    private Controller controller;
+    
+    /**
+     *
+     * @param controller
+     */
+    public Cuadro(Controller controller) {
         initComponents();
         this.setLocationRelativeTo(null);
          setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));
+         this.controller = controller;
     }
 
     /**
@@ -26,18 +39,47 @@ public class Cuadro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Flappy Quetzal");
         setResizable(false);
-        getContentPane().setLayout(new java.awt.CardLayout());
+        getContentPane().setLayout(null);
+
+        jButton1.setBackground(new java.awt.Color(255, 102, 153));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flappybird/nuevojuego.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setMinimumSize(new java.awt.Dimension(680, 460));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(140, 420, 221, 69);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/flappybird/fondomenur.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, "card2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 518, 724);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            // TODO add your handling code here:
+            this.setVisible(false);
+            this.revalidate();
+            controller.jugar(); 
+        } catch (InterruptedException ex) {
+            Logger.getLogger(Cuadro.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -67,14 +109,11 @@ public class Cuadro extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Cuadro().setVisible(true);
-            }
-        });
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,20 +1,34 @@
 package flappybird;
 import java.io.*;
 
+/**
+ * Mediante esta clase se maneja si el puntaje obtenido por el jugador ha superado puntajes previos.
+ * @author Proyecto POO
+ */
 public class Score implements Comparable<Score>, Serializable {
-    //aquí de manera general se podría decir que es dónde haremos la comparación de los puntos generados anteriormente con los actuales
-
-   
+    
     private int puntos;
 
+    /**
+     * Constructor de la clase, se inicializa con un valor dado.
+     * @param puntos Puntos para ser inicializado.
+     */
     public Score(int puntos) {
         this.puntos = puntos;
     }
 
+    /**
+     * Getter para obtener los puntos.
+     * @return Puntos.
+     */
     public int getPuntos() {
         return puntos;
     }
 
+    /**
+     * Setter para asignar los puntos.
+     * @param puntos Los puntos a ser asignados.
+     */
     public void setPuntos(int puntos) {
         this.puntos = puntos;
     }

@@ -1,19 +1,40 @@
 package flappybird;
 import java.util.*;
 import java.text.*;
+
+/**
+ * Mediante esta clase se verificarán los puntajes obtenidos.
+ * @author Proyecto POO
+ */
 public class Scores  {
 
+    /**
+     * El número máximo de puntajes almacenados será de 3.
+     */
     public static final int MAX_NUM_PUNTAJES = 3;
     private ArrayList<Score> listaPuntajes = new ArrayList();
 
+    /**
+     * Getter para obtener la lista de puntajes.
+     * @return Lista de puntajes.
+     */
     public ArrayList<Score> getListaPuntajes() {
         return listaPuntajes;
     }
 
+    /**
+     * Setter para asignar una lista de puntajes.
+     * @param listaPuntajes ArrayList con los puntajes para asignar.
+     */
     public void setListaPuntajes(ArrayList<Score> listaPuntajes) {
         this.listaPuntajes = listaPuntajes;
     }
     //esta parte añadirá los puntos pero cuidando que no sean mayores a 3 puntuaciones
+
+    /**
+     * Método para añadir puntajes, además se verifica si se ha sobrepasado el límite de puntajes a almacenar (3).
+     * @param puntuacion Se añade la puntuación al arreglo.
+     */
     public void anadirPuntaje(Score puntuacion) {
         listaPuntajes.add(puntuacion);
         Collections.sort(listaPuntajes);
@@ -22,6 +43,11 @@ public class Scores  {
         }
     }
 
+    /**
+     * Getter para obtener la posición que ocupa el puntaje especificado en el arreglo de puntajes.
+     * @param puntuacion Puntuación a buscar.
+     * @return Índice de la puntuación a buscar en el arreglo.
+     */
     public int getPosicion(Score puntuacion) {
         return listaPuntajes.indexOf(puntuacion);
     }

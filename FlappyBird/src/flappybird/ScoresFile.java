@@ -1,22 +1,27 @@
-
 package flappybird;
 import java.io.*;
 import java.util.*;
 import java.util.logging.*;
 
-
+/**
+ * En esta clase se escribirá en el archivo highscores.dat los puntajes máximos con un límite de 3 puntajes almacenados.
+ * @author Proyecto POO
+ */
 public class ScoresFile {
 
     private final File highScoreFile;
 
+    /**
+     * Constructor de la clase, se elige la ruta para el archivo highscores.dat debido a que es un tipo genérico más fácil de manipular.
+     */
     public ScoresFile() {
-        highScoreFile = new File("highscores.dat");//con .dat se guardan datos de tipo genérico que dan soporte al programa con el que fueron creados
-                                                //es más fácil de manipular
+        highScoreFile = new File("highscores.dat");
     }
-    //lo que hace cargarPuntaje es mostrar el tablero de puntuación, aquí no se crea el archivo (esto ocurre en guardarPuntos)
-    //como bien sabemos, esto genera excepciones, para mostrarlas investigué un poco más y me encontré con Logger
-    //Logger lo que hace es mandar mensajes de la ejecución de la aplicación, es un poco más formal para dar a conocer las excepciones xd
     
+    /**
+     *Mediante este método se cargaran los puntajes al arreglo para leerse.
+     * @param scores Puntajes para ser cargados.
+     */
     public void cargarPuntaje(Scores scores) {
         FileInputStream ficheroTableroPuntos = null;
         try {
@@ -36,7 +41,11 @@ public class ScoresFile {
             }
         }
     }
-    //es muy parecido a cargarPuntaje
+
+    /**
+     * Mediante este método se escribirá el arreglo de puntajes al archivo highscores.dat.
+     * @param scores Puntajes para ser escritos en el archivo.
+     */
     public void guardarPuntos(Scores scores) {
         FileOutputStream ficheroGuardarPuntos = null;
         try {

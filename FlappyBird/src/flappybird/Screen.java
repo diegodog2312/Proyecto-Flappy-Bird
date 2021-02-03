@@ -1,23 +1,15 @@
-
 package flappybird;
 
 import java.awt.*;
 import java.util.Random;
-import java.awt.image.BufferedImage;
 import javax.swing.*;
-import javax.imageio.ImageIO;
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- *
- * @author diegoignacionunezhernandez
+ * Clase que maneja lo relacionado con la pantalla de juego: los personajes, obstáculos y sus interacciones.
+ * @author Proyecto POO
  */
 public class Screen extends JFrame{
-    public JFrame frame = new JFrame();
-    public JPanel panel;
+
     private JLabel pajaro = new JLabel();  
     private JLabel arbol1 = new JLabel();   
     private JLabel arbol2 = new JLabel();
@@ -30,6 +22,9 @@ public class Screen extends JFrame{
     private final int HEIGHT=724;//((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight())/2;
     private final int WIDTH=518;//((int) Toolkit.getDefaultToolkit().getScreenSize().getWidth())/2;
     
+    /**
+     * Constructor de la clase, en él se definen las propiedades del marco y del panel por capas.
+     */
     public Screen() {
         layeredPane.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         //layeredPane.setBorder(BorderFactory.createTitledBorder("THIS IS THE TITLE"));
@@ -41,6 +36,9 @@ public class Screen extends JFrame{
         
     }
     
+    /**
+     *Método para colocar todos los componentes.
+     */
     public void colocarComponentes(){     
         colocarPaneles();
         colocarLabels();
@@ -66,6 +64,15 @@ public class Screen extends JFrame{
         
     }
     
+    /**
+     *Método para colocar los personajes en nuestro panel por capas. En este método se definirán sus tamaños y posiciones.
+     * @param bird Objeto tipo bird que representará el quetzal.
+     * @param tree1 Objeto tipo Obstaculo que representará el árbol 1.
+     * @param tree2 Objeto tipo Obstaculo que representará el árbol 2.
+     * @param cloud1 Objeto tipo Obstaculo que representará la nube 1.
+     * @param cloud2 Objeto tipo Obstaculo que representará la nube 2.
+     * @param score Entero que mostrará en pantalla el puntaje del jugador.
+     */
     public void colocarPersonajes(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){                                    
         pajaro = new JLabel(new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH))) ;
         pajaro.setBounds(0, 0, 85, 85);
@@ -120,9 +127,18 @@ public class Screen extends JFrame{
         nube2.setBorder(BorderFactory.createLineBorder(Color.RED));*/
     }
     
+    /**
+     * Método para mostrar puntaje en pantalla.
+     * @param score Valor a mostrar en pantalla
+     */
     public void sumarPunto(int score){
         puntaje.setText(String.valueOf(score));
     }
+
+    /**
+     * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
+     * @param bird Objeto tipo Bird (que representa el quetzal).
+     */
     public void volar(Bird bird){
         ImageIcon imagen = new ImageIcon("quetzal2.png");                         
         bird.setBird(imagen);
@@ -135,6 +151,10 @@ public class Screen extends JFrame{
         bird.setRectangle(pajaro.getBounds());
     }
     
+    /**
+     * Método encargado de la caída del quetzal, se define su imagen así como cuánto disminuye en la coordenada Y.
+     * @param bird Objeto tipo Bird (que representa el quetzal).
+     */
     public void caer(Bird bird){
         ImageIcon imagen = new ImageIcon("quetzal.png");         
         bird.setBird(imagen);        
@@ -148,6 +168,11 @@ public class Screen extends JFrame{
         bird.setRectangle(pajaro.getBounds());
     }
     
+    /**
+     * Método encargado de mover los árboles por la pantalla decrementando su valor en X.
+     * @param tree1 Objeto tipo Obstaculo que representa el árbol 1.
+     * @param tree2 Objeto tipo Obstaculo que representa el árbol 2.
+     */
     public void moverArboles(Obstaculo tree1, Obstaculo tree2){
         Random rand = new Random();
         int randomTree = rand.nextInt(220);
@@ -176,6 +201,11 @@ public class Screen extends JFrame{
         tree2.setRectangle(arbol2.getBounds());
     }
     
+    /**
+     * Método encargado de mover las nubes por la pantalla decrementando su valor en X.
+     * @param cloud1 Objeto tipo Obstaculo que representa la nube 1.
+     * @param cloud2 Objeto tipo Obstaculo que representa la nube 2.
+     */
     public void moverNubes(Obstaculo cloud1, Obstaculo cloud2){
         if(cloud1.getX()<=-arbol1.getWidth()){
             cloud1.setX(WIDTH+arbol1.getWidth());
