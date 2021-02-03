@@ -86,6 +86,8 @@ public class Controller {
         screen.getBplay().addActionListener(e -> {
             screen.getBplay().setVisible(false);
             screen.getMenu().setVisible(false);
+            screen.getTitulo().setVisible(false);
+            screen.getGif().setVisible(false);
             start();           
             musica();
         });
@@ -163,7 +165,7 @@ public class Controller {
             //System.out.println("restart");
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
-            screen.getBleaderBoard().setVisible(false);
+            screen.getBleaderBoard().setVisible(false);            
             puntaje=0;
             screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, pasto,techo,0);
             bird.Vivir();

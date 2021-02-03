@@ -45,6 +45,30 @@ public class Screen extends JFrame{
         menuInicio();
         puntos=0;
     }
+
+    public JLabel getGif() {
+        return gif;
+    }
+
+    public void setGif(JLabel gif) {
+        this.gif = gif;
+    }
+
+    public JLabel getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(JLabel titulo) {
+        this.titulo = titulo;
+    }
+
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
     
     /**
      * Menú de inicio que mostrará una imagen de fondo y un botón para dar inicio a una partida.
