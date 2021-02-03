@@ -23,6 +23,7 @@ public class Screen extends JFrame{
     private JButton Bplay;
     private JButton Brestart;
     private JButton BleaderBoard;
+    private int puntos;
     private JLayeredPane layeredPane = new JLayeredPane();
     
     private final int HEIGHT=724;
@@ -40,6 +41,7 @@ public class Screen extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);    
         getContentPane().add(layeredPane);    
         menuInicio();
+        puntos=0;
     }
     
     public void menuInicio(){          
@@ -61,12 +63,14 @@ public class Screen extends JFrame{
 
     
     /**
-     *Método para colocar los personajes en nuestro panel por capas. En este método se definirán sus tamaños y posiciones.
+     *Método para colocar los personajes en nuestro panel por capas.En este método se definirán sus tamaños y posiciones.
      * @param bird Objeto tipo bird que representará el quetzal.
      * @param tree1 Objeto tipo Obstaculo que representará el árbol 1.
      * @param tree2 Objeto tipo Obstaculo que representará el árbol 2.
      * @param cloud1 Objeto tipo Obstaculo que representará la nube 1.
      * @param cloud2 Objeto tipo Obstaculo que representará la nube 2.
+     * @param grass Objeto tipo Obstaculo que actuará como el piso.
+     * @param roof Objeto tipo Obstaculo que actuará como el límite superior.
      * @param score Entero que mostrará en pantalla el puntaje del jugador.
      */
     public void juego(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass,Obstaculo roof,int score){                   
@@ -112,17 +116,18 @@ public class Screen extends JFrame{
         nube1.setBounds(0, 0, 120, 90);  
         layeredPane.add(nube1, new Integer(3));
         cloud1.setX(tree1.getX()+65);
-        cloud1.setY(-100);
+        cloud1.setY(0);
         cloud1.setRectangle(nube1.getBounds());     
                               
         nube2 = new JLabel(new ImageIcon(cloud2.getObstaculo().getImage().getScaledInstance(120, 90, Image.SCALE_SMOOTH)));    
         nube2.setBounds(0, 0, 120, 90); 
         layeredPane.add(nube2, new Integer(3));
         cloud2.setX(tree2.getX()+65);
-        cloud2.setY(-200);
+        cloud2.setY(150);
         cloud2.setRectangle(nube2.getBounds());
         
-        puntaje = new JLabel(String.valueOf(score));
+        puntos=score;
+        puntaje = new JLabel(String.valueOf(puntos));
         Color color = new Color(229,255,205);
         puntaje.setBounds(WIDTH/2,65,30,30);
         puntaje.setFont(new Font("Serif", Font.BOLD, 25));
@@ -145,7 +150,8 @@ public class Screen extends JFrame{
      * @param score Valor a mostrar en pantalla
      */
     public void sumarPunto(int score){
-        puntaje.setText(String.valueOf(score));
+        puntos=score;
+        puntaje.setText(String.valueOf(puntos));
     }
     
     public void mostrarPuntaje(int score){
@@ -158,24 +164,24 @@ public class Screen extends JFrame{
         puntaje.setBounds(240,186,30,30);
         Color color = new Color(92,60,6);
         puntaje.setForeground(color);
-               
+        
         ImageIcon imgR = new ImageIcon("BRestart.png");
-        ImageIcon imgL = new ImageIcon("BLeaderboard.png");                
+        ImageIcon imgL = new ImageIcon("BLeaderboard.png");
         
         Brestart = new JButton(new ImageIcon(imgR.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         Brestart.setBorder(BorderFactory.createEmptyBorder());
         Brestart.setContentAreaFilled(false);
-        Brestart.setBounds(100, 400,120, 70);        
+        Brestart.setBounds(100, 400,120, 70);
         Brestart.setVisible(true);
         
         BleaderBoard = new JButton(new ImageIcon(imgL.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         BleaderBoard.setBorder(BorderFactory.createEmptyBorder());
         BleaderBoard.setContentAreaFilled(false);
-        BleaderBoard.setBounds(270, 400,120, 70);        
+        BleaderBoard.setBounds(270, 400,120, 70);
         BleaderBoard.setVisible(true);
-                
+        
         layeredPane.add(Brestart, new Integer(5));
-        layeredPane.add(BleaderBoard, new Integer(5));          
+        layeredPane.add(BleaderBoard, new Integer(5));
     }
     /**
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
@@ -394,42 +400,45 @@ public class Screen extends JFrame{
     }
     
      // coloca personajes en punto original 
-    public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){
-        //pajaro.setBounds(0, 0, 85, 85);
+    public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){
+        pajaro.setBounds(0, 0, 85, 85);
         bird.setX(50);
         bird.setY(50);
-        pajaro.setLocation(bird.getX(), bird.getY());
         bird.setRectangle(pajaro.getBounds());
+
+        pasto.setBounds(0,645, WIDTH,40);
+        grass.setRectangle(pasto.getBounds());
         
+        techo.setBounds(0,0, WIDTH,40);
+        roof.setRectangle(techo.getBounds());
         
-        //arbol1.setBounds(WIDTH, 270, 250, 420); 
+        arbol1.setBounds(WIDTH, 270, 250, 420);
         tree1.setX(WIDTH);
-        tree1.setY(270); 
-        arbol1.setLocation(tree1.getX(), tree1.getY());
+        tree1.setY(270);
         tree1.setRectangle(arbol1.getBounds());
-               
-        //arbol2.setBounds(0, 0, 250, 420);   
+                  
+        arbol2.setBounds(0, 0, 250, 420);
         tree2.setX(WIDTH*2);
-        tree2.setY(560);        
-        arbol2.setLocation(tree2.getX(), tree2.getY());
+        tree2.setY(560);
         tree2.setRectangle(arbol2.getBounds());
-        
-        //nube1.setBounds(0, 0, 120, 90);  
+           
+        nube1.setBounds(0, 0, 120, 90);
         cloud1.setX(tree1.getX()+65);
-        cloud1.setY(-100);
-        nube1.setLocation(cloud1.getX(), cloud1.getY());   
+        cloud1.setY(0);
         cloud1.setRectangle(nube1.getBounds());
         
-            
-        //nube2.setBounds(0, 0, 120, 90);
+        nube2.setBounds(0, 0, 120, 90);
         cloud2.setX(tree2.getX()+65);
-        cloud2.setY(-200);
-        nube2.setLocation(cloud2.getX(), cloud2.getY());
-        cloud2.setRectangle(nube2.getBounds());       
+        cloud2.setY(150);
+        cloud2.setRectangle(nube2.getBounds());
         
         
-        //puntaje.setBounds(WIDTH/2,65,30,30);
-        puntaje.setText(String.valueOf(score));
+        this.puntos=score;
+        puntaje.setText(String.valueOf(puntos));
+        Color color = new Color(229,255,205);
+        puntaje.setBounds(WIDTH/2,65,30,30);
+        puntaje.setFont(new Font("Serif", Font.BOLD, 25));
+        puntaje.setForeground(color);
     } 
     
    

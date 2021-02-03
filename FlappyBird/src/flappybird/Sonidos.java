@@ -1,4 +1,3 @@
-
 package flappybird;
 import java.io.File;
 import java.io.IOException;

@@ -36,7 +36,6 @@ public class Controller {
      * @param nube1 Objeto tipo Obstaculo que representará la nube 1.
      * @param nube2 Objeto tipo Obstaculo que representará la nube 2.
      * @param screen Objeto tipo Screen para mostrarla en pantalla.
-     * @param mostrar Booleano para decidir si se muestra la pantalla.
      */
     public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos, Obstaculo pasto, Obstaculo techo) {
         this.bird = bird;
@@ -94,9 +93,6 @@ public class Controller {
      * Mediante este método se inicia el juego: se colocan los componentes y
      * personajes, se valida, mientras el quetzal esté vivo, si ocurrió una
      * colisión o si se aumenta el puntaje.
-     *
-     * @throws InterruptedException En caso de no poder dormir al hilo se
-     * lanzará esta excepción.
      */
     public void start() {                
         Thread t1 = new Thread(new Runnable() {
@@ -116,7 +112,8 @@ public class Controller {
                         sonido.stop();
                         bird.Matar();
                         sonido.reproducirSonido("muerte.wav");                        
-                        gameOver();                                                  
+                        gameOver();
+                        
                     } else {
                         // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
                         if (tree1.getX() + 40 <= bird.getX() & contado) {
@@ -153,12 +150,13 @@ public class Controller {
 
     public void gameOver() {
         screen.mostrarPuntaje(puntaje);
-        screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, puntaje);
         screen.getBrestart().addActionListener(e -> {
+            System.out.println("restart");
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
             screen.getBleaderBoard().setVisible(false);
-           
+            puntaje=0;
+            screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, pasto,techo,0);
             bird.Vivir();
             start();
         });
