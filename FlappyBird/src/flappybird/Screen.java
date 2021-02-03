@@ -16,6 +16,8 @@ public class Screen extends JFrame{
     private JLabel nube2;
     private JLabel fondo;
     private JLabel menu;
+    private JLabel gif;
+    private JLabel titulo;
     private JLabel pasto;
     private JLabel techo;    
     private JLabel puntaje;
@@ -63,6 +65,18 @@ public class Screen extends JFrame{
         menu.setIcon(bg);
         menu.setSize(WIDTH, HEIGHT);            
         layeredPane.add(menu,new Integer(99));
+        
+        Icon gf = new ImageIcon("quetzalMov.gif");
+        gif = new JLabel(gf);
+        gif.setBounds(100, 120, 239, 184);
+        gif.setVisible(true);
+        layeredPane.add(gif,new Integer(100));
+        
+        titulo = new JLabel("FLAPPY QUETZAL");
+        titulo.setBounds(200, 10, 239, 184);
+        titulo.setVisible(true);
+        layeredPane.add(titulo, new Integer(100));
+        
     }   
 
     
