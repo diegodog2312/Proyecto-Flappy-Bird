@@ -52,6 +52,9 @@ public class Screen extends JFrame{
         setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
     }
     
+    /**
+     * Método donde se mostrará el menú de inicio.
+     */
     public void menuInicio(){          
         ImageIcon imgP = new ImageIcon("BPlay.png");   
         Bplay = new JButton(new ImageIcon(imgP.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
@@ -190,15 +193,29 @@ public class Screen extends JFrame{
         puntaje.setText(String.valueOf(puntos));
     }
     
+    /**
+     * Método para mostrar o no la información.
+     * @param show Boolean, true o false.
+     * @return !show
+     */
     public boolean showInfo(boolean show){
         info.setVisible(show);
         return !show;
     }
     
+    /**
+     * Getter del botón de información
+     * @return Botón de información.
+     */
     public JButton getInfoButton(){
         return BInfo;
     }
     
+    /**
+     * Método para mostrar los puntos obtenidos en el juego, con opción para reiniciar la partida o abrir los puntajes almacenados.
+     * @param score Puntaje obtenido en la partida.
+     * @param maxPuntaje Máximo puntaje almacenado.
+     */
     public void mostrarPuntaje(int score, int maxPuntaje){
         ImageIcon imgS = new ImageIcon("WResult.png");
         
@@ -260,6 +277,10 @@ public class Screen extends JFrame{
         bird.setRectangle(pajaro.getBounds());
     }          
     
+    /**
+     * Método para la animación del quetzal, utilizando hilos. Modifica la imagen que representa Bird cada cierto tiempo.
+     * @param bird Objeto tipo Bird para modificar la imagen que lo representa.
+     */
     public void movimientoBird(Bird bird){
         Thread t = new Thread(new Runnable() {
             @Override
@@ -422,152 +443,301 @@ public class Screen extends JFrame{
         cloud2.setRectangle(nube2.getBounds());
     }
             
-          
+    /**
+     *
+     * @return
+     */
     public JLabel getPajaro() {
         return pajaro;
     }
 
+    /**
+     *
+     * @param pajaro
+     */
     public void setPajaro(JLabel pajaro) {
         this.pajaro = pajaro;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getArbol1() {
         return arbol1;
     }
 
+    /**
+     *
+     * @param arbol1
+     */
     public void setArbol1(JLabel arbol1) {
         this.arbol1 = arbol1;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getArbol2() {
         return arbol2;
     }
 
+    /**
+     *
+     * @param arbol2
+     */
     public void setArbol2(JLabel arbol2) {
         this.arbol2 = arbol2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getNube1() {
         return nube1;
     }
 
+    /**
+     *
+     * @param nube1
+     */
     public void setNube1(JLabel nube1) {
         this.nube1 = nube1;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getNube2() {
         return nube2;
     }
 
+    /**
+     *
+     * @param nube2
+     */
     public void setNube2(JLabel nube2) {
         this.nube2 = nube2;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getFondo() {
         return fondo;
     }
 
+    /**
+     *
+     * @param fondo
+     */
     public void setFondo(JLabel fondo) {
         this.fondo = fondo;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getPasto() {
         return pasto;
     }
 
+    /**
+     *
+     * @param pasto
+     */
     public void setPasto(JLabel pasto) {
         this.pasto = pasto;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getTecho() {
         return techo;
     }
 
+    /**
+     *
+     * @param techo
+     */
     public void setTecho(JLabel techo) {
         this.techo = techo;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getPuntaje() {
         return puntaje;
     }
 
+    /**
+     *
+     * @param puntaje
+     */
     public void setPuntaje(JLabel puntaje) {
         this.puntaje = puntaje;
     }
 
+    /**
+     *
+     * @return
+     */
     public JLabel getPuntajeFinal() {
         return puntajeFinal;
     }
 
+    /**
+     *
+     * @param puntajeFinal
+     */
     public void setPuntajeFinal(JLabel puntajeFinal) {
         this.puntajeFinal = puntajeFinal;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getBplay() {
         return Bplay;
     }
 
+    /**
+     *
+     * @param Bplay
+     */
     public void setBplay(JButton Bplay) {
         this.Bplay = Bplay;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getBrestart() {
         return Brestart;
     }
 
+    /**
+     *
+     * @param Brestart
+     */
     public void setBrestart(JButton Brestart) {
         this.Brestart = Brestart;
     }
 
+    /**
+     *
+     * @return
+     */
     public JButton getBleaderBoard() {
         return BleaderBoard;
     }
 
+    /**
+     *
+     * @param BleaderBoard
+     */
     public void setBleaderBoard(JButton BleaderBoard) {
         this.BleaderBoard = BleaderBoard;
     }
 
+    @Override
     public JLayeredPane getLayeredPane() {
         return layeredPane;
     }
 
+    @Override
     public void setLayeredPane(JLayeredPane layeredPane) {
         this.layeredPane = layeredPane;
     }
     
+    /**
+     *
+     * @return
+     */
     public JLabel getMenu() {
         return menu;
     }
 
+    /**
+     *
+     * @param menu
+     */
     public void setMenu(JLabel menu) {
         this.menu = menu;
     }
     
-        public JLabel getGif() {
+    /**
+     *
+     * @return
+     */
+    public JLabel getGif() {
          return gif;
      }
 
-     public void setGif(JLabel gif) {
+    /**
+     *
+     * @param gif
+     */
+    public void setGif(JLabel gif) {
          this.gif = gif;
      }
 
-     public JLabel getTitulo() {
+    /**
+     *
+     * @return
+     */
+    public JLabel getTitulo() {
          return titulo;
      }
 
-     public void setTitulo(JLabel titulo) {
+    /**
+     *
+     * @param titulo
+     */
+    public void setTitulo(JLabel titulo) {
          this.titulo = titulo;
      }
 
-     public int getPuntos() {
+    /**
+     *
+     * @return
+     */
+    public int getPuntos() {
          return puntos;
      }
 
-     public void setPuntos(int puntos) {
+    /**
+     *
+     * @param puntos
+     */
+    public void setPuntos(int puntos) {
          this.puntos = puntos;
      }
     
      // coloca personajes en punto original 
+
+    /**
+     * Método para volver a mostrar y colocar adecuadamente los objetos donde pertenecen.
+     * @param bird Objeto tipo bird que representará el quetzal.
+     * @param tree1 Objeto tipo Obstaculo que representará el árbol 1.
+     * @param tree2 Objeto tipo Obstaculo que representará el árbol 2.
+     * @param cloud1 Objeto tipo Obstaculo que representará la nube 1.
+     * @param cloud2 Objeto tipo Obstaculo que representará la nube 2.
+     * @param grass Objeto tipo Obstaculo que actuará como el piso.
+     * @param roof Objeto tipo Obstaculo que actuará como el límite superior.
+     * @param score Entero que mostrará en pantalla el puntaje del jugador.
+     */
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){
         layeredPane.remove(max);
         pajaro.setBounds(0, 0, 85, 85);
@@ -602,7 +772,7 @@ public class Screen extends JFrame{
         cloud2.setRectangle(nube2.getBounds());
         
         
-        this.puntos=score;
+        puntos=score;
         puntaje.setText(String.valueOf(puntos));
         Color color = new Color(229,255,205);
         puntaje.setBounds(WIDTH/2,65,30,30);
@@ -610,7 +780,10 @@ public class Screen extends JFrame{
         puntaje.setForeground(color);
     } 
     
-   
+    /**
+     * Método para mostrar los puntajes máximos almacenados.
+     * @param scores Objeto tipo Scores para leer los puntajes.
+     */
     public void showHighscores(Scores scores){
         tableroPuntaje tablero = new tableroPuntaje(scores);
         

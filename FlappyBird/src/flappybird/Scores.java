@@ -65,6 +65,10 @@ public class Scores  {
         return resultado;
     }
     
+    /**
+     *Método para obtener la puntuación máxima almacenada.
+     * @return Puntuación máxima almacenada.
+     */
     public int maxScore(){
         Score puntuacion = listaPuntajes.get(0);
         return puntuacion.getPuntos();
