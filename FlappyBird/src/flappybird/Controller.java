@@ -94,9 +94,10 @@ public class Controller {
         screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, puntaje);
         //screen.setVisible(true);
         screen.revalidate();
-        sonido.reproducirSonido("fondo.wav");
+        sonido.reproducirLoop("fondo.wav");
+        sonido.reproducirLoop("volando.wav");
         //while(this.bird.getY()!=screen.getWidth()){
-            sonido.reproducirVuelo();
+            
             // valor prueba 
             while(!bird.isMuerto()){
                 screen.caer(bird);           
@@ -105,6 +106,7 @@ public class Controller {
                 Thread.sleep(80);
                 if(colision()){
                   System.out.println("Choco");
+                    sonido.stop();
                     sonido.stop();
                     bird.Matar();
                     sonido.reproducirSonido("muerte.wav");

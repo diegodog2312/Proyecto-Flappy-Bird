@@ -16,7 +16,7 @@ public class Sonidos {
     private Clip vuelo;
 
     /**
-     * Mediante este método se reproducen sonidos como el haber obtenido un punto en el juego.
+     * Mediante este método se reproducen sonidos como el haber obtenido un punto en el juego, morir o la música de fondo.
      * @param nombreSonido Nombre del archivo de sonido.
      */
     public void reproducirSonido(String nombreSonido){
@@ -31,11 +31,12 @@ public class Sonidos {
     }
     
     /**
-     * Mediante este método se reproduce en un ciclo el sonido del vuelo del quetzal.
+     * Mediante este método se reproduce en un ciclo el sonido del vuelo del quetzal y la música de fondo.
+     * @param nombreSonido Nombre de la pista de audio a reproducir.
      */
-    public void reproducirVuelo(){
+    public void reproducirLoop(String nombreSonido){
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("volando.wav").getAbsoluteFile());
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
             vuelo = AudioSystem.getClip();
             vuelo.open(audioInputStream);
             vuelo.loop(Clip.LOOP_CONTINUOUSLY);
