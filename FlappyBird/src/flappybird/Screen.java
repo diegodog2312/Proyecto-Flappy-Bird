@@ -26,6 +26,7 @@ public class Screen extends JFrame{
      * Constructor de la clase, en él se definen las propiedades del marco y del panel por capas.
      */
     public Screen() {
+        requestFocus();
         layeredPane.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         //layeredPane.setBorder(BorderFactory.createTitledBorder("THIS IS THE TITLE"));
         setSize(WIDTH, HEIGHT);

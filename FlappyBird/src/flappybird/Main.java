@@ -23,9 +23,10 @@ public class Main {
         Obstaculo nube1 = new Obstaculo(1);
         Obstaculo nube2 = new Obstaculo(1);
         Screen screen = new Screen();
+        Sonidos sonidos = new Sonidos();
         //screen.colocarBotones();
         
-        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,true);
+        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,true);
         
         controller.jugar();
         

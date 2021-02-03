@@ -16,7 +16,7 @@ public class Controller {
     private Obstaculo nube2;
     private Screen screen;
     private int puntaje = 0;
-    private Sonidos sonido = new Sonidos();
+    private Sonidos sonido;
     boolean contado = true;
 
     /**
@@ -29,13 +29,14 @@ public class Controller {
      * @param screen Objeto tipo Screen para mostrarla en pantalla.
      * @param mostrar Booleano para decidir si se muestra la pantalla.
      */
-    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, boolean mostrar) {
+    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos,boolean mostrar) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
         this.nube1 = nube1;
         this.nube2 = nube2;
         this.screen = screen;
+        this.sonido = sonidos;
         //screen.colocarComponentes();
         //screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
         screen.setVisible(mostrar);
@@ -93,6 +94,7 @@ public class Controller {
         screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, puntaje);
         //screen.setVisible(true);
         screen.revalidate();
+        sonido.reproducirSonido("fondo.wav");
         //while(this.bird.getY()!=screen.getWidth()){
             sonido.reproducirVuelo();
             // valor prueba 

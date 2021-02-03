@@ -12,6 +12,8 @@ public class Bird {
     private ImageIcon bird;
     private int x;
     private int y;
+    private double velX = 0;
+    private double velY = 0;
     private boolean muerto = false;
     private final int WIDTH=358;
     private final int HEIGHT=259;
