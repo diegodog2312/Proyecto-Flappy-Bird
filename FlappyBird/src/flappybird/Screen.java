@@ -16,6 +16,8 @@ public class Screen extends JFrame{
     private JLabel nube2;
     private JLabel fondo;
     private JLabel menu;
+    private JLabel gif;
+    private JLabel titulo;
     private JLabel pasto;
     private JLabel techo;    
     private JLabel max;
@@ -60,6 +62,17 @@ public class Screen extends JFrame{
         menu.setIcon(bg);
         menu.setSize(WIDTH, HEIGHT);            
         layeredPane.add(menu,new Integer(99));
+        
+        Icon gf = new ImageIcon("quetzalMov.gif");
+        gif = new JLabel(gf);
+        gif.setBounds(100, 120, 239, 184);
+        gif.setVisible(true);
+        layeredPane.add(gif,new Integer(100));
+        
+        titulo = new JLabel("FLAPPY QUETZAL");
+        titulo.setBounds(200, 10, 239, 184);
+        titulo.setVisible(true);
+        layeredPane.add(titulo, new Integer(100));
     }   
 
     
@@ -409,6 +422,30 @@ public class Screen extends JFrame{
     public void setMenu(JLabel menu) {
         this.menu = menu;
     }
+    
+        public JLabel getGif() {
+         return gif;
+     }
+
+     public void setGif(JLabel gif) {
+         this.gif = gif;
+     }
+
+     public JLabel getTitulo() {
+         return titulo;
+     }
+
+     public void setTitulo(JLabel titulo) {
+         this.titulo = titulo;
+     }
+
+     public int getPuntos() {
+         return puntos;
+     }
+
+     public void setPuntos(int puntos) {
+         this.puntos = puntos;
+     }
     
      // coloca personajes en punto original 
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){

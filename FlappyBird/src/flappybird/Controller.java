@@ -84,6 +84,8 @@ public class Controller {
         screen.getBplay().addActionListener(e -> {
             screen.getBplay().setVisible(false);
             screen.getMenu().setVisible(false);
+            screen.getTitulo().setVisible(false);
+            screen.getGif().setVisible(false);
             start();           
             musica();
         });
