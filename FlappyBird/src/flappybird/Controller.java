@@ -87,7 +87,7 @@ public class Controller {
             screen.getTitulo().setVisible(false);
             screen.getGif().setVisible(false);
             start();           
-            musica();
+            //musica();
         });
 
     }
@@ -111,8 +111,8 @@ public class Controller {
                         Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     if (colision()) {
-                        sonido.stop();
-                        sonido.stop();
+                        //sonido.stop();
+                        //sonido.stop();
                         bird.Matar();
                         sonido.reproducirSonido("muerte.wav");                        
                         gameOver();
@@ -152,10 +152,12 @@ public class Controller {
     }
 
     public void gameOver() {
+        screen.getPajaro().setVisible(false);
         Scores scores = puntaje(puntaje);
         screen.mostrarPuntaje(puntaje, maxPuntaje);
         screen.getBrestart().addActionListener(e -> {
             System.out.println("restart");
+            screen.getPajaro().setVisible(true);
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
             screen.getBleaderBoard().setVisible(false);

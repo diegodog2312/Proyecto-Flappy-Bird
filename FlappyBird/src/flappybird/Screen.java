@@ -212,7 +212,7 @@ public class Screen extends JFrame{
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
      * @param bird Objeto tipo Bird (que representa el quetzal).
      */
-    public void volar(Bird bird){
+    public void volar(Bird bird){               
         ImageIcon imagen = new ImageIcon("quetzal2.png");                         
         bird.setBird(imagen);
         imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
