@@ -14,6 +14,8 @@ public class Controller {
     private Obstaculo tree2;
     private Obstaculo nube1;
     private Obstaculo nube2;
+    private Obstaculo pasto;
+    private Obstaculo techo;
     private Screen screen;
     private int puntaje = 0;
     private Sonidos sonido;
@@ -29,7 +31,7 @@ public class Controller {
      * @param screen Objeto tipo Screen para mostrarla en pantalla.
      * @param mostrar Booleano para decidir si se muestra la pantalla.
      */
-    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos,boolean mostrar) {
+    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos,Obstaculo pasto, Obstaculo techo,boolean mostrar) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
@@ -37,6 +39,8 @@ public class Controller {
         this.nube2 = nube2;
         this.screen = screen;
         this.sonido = sonidos;
+        this.pasto = pasto;
+        this.techo = techo;
         //screen.colocarComponentes();
         //screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
         screen.setVisible(mostrar);
@@ -91,7 +95,7 @@ public class Controller {
      */
     public void jugar() throws InterruptedException{
         screen.colocarComponentes();
-        screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, puntaje);
+        screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, pasto, techo,puntaje);
         //screen.setVisible(true);
         screen.revalidate();
         sonido.reproducirLoop("fondo.wav");
@@ -103,6 +107,7 @@ public class Controller {
                 screen.caer(bird);           
                 screen.moverArboles(tree1, tree2);
                 screen.moverNubes(nube1, nube2);
+//                screen.moverFronteras(techo, pasto);
                 Thread.sleep(80);
                 if(colision()){
                   System.out.println("Choco");
@@ -143,7 +148,7 @@ public class Controller {
     public boolean colision(){
        
        // si choca con alguno regresa verdadero
-       if(collisionA() || collisionB()){
+       if(collisionA() || collisionB() || collisionC()){
            //JOptionPane.showMessageDialog(screen, "Choco");
            return true;
        }
@@ -167,6 +172,12 @@ public class Controller {
      */
     public boolean collisionB(){
         if(bird.getRectangle().intersects(nube1.getRectangle()) || bird.getRectangle().intersects(nube2.getRectangle()))
+            return true;
+        return false;
+    }
+    
+    public boolean collisionC(){
+        if(bird.getRectangle().intersects(pasto.getRectangle()) || bird.getRectangle().intersects(techo.getRectangle()))
             return true;
         return false;
     }

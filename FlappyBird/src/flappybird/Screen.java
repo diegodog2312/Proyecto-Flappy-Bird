@@ -16,6 +16,8 @@ public class Screen extends JFrame{
     private JLabel nube1 = new JLabel();   
     private JLabel nube2 = new JLabel();
     private JLabel fondo = new JLabel();
+    private JLabel pasto = new JLabel();
+    private JLabel techo = new JLabel();    
     private JLabel puntaje = new JLabel();
     private JLayeredPane layeredPane = new JLayeredPane();
     
@@ -74,13 +76,23 @@ public class Screen extends JFrame{
      * @param cloud2 Objeto tipo Obstaculo que representará la nube 2.
      * @param score Entero que mostrará en pantalla el puntaje del jugador.
      */
-    public void colocarPersonajes(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){                                    
+    public void colocarPersonajes(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass,Obstaculo roof,int score){                                    
         pajaro = new JLabel(new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH))) ;
         pajaro.setBounds(0, 0, 85, 85);
         layeredPane.add(pajaro, new Integer(4));
         bird.setX(50);
         bird.setY(50);
         bird.setRectangle(pajaro.getBounds());
+        
+        pasto = new JLabel(new ImageIcon(grass.getObstaculo().getImage().getScaledInstance(WIDTH, 50, Image.SCALE_SMOOTH)));
+        pasto.setBounds(0,645, WIDTH,40);
+        layeredPane.add(pasto,new Integer(2));
+        grass.setRectangle(pasto.getBounds());
+        
+        techo = new JLabel(new ImageIcon(roof.getObstaculo().getImage().getScaledInstance(WIDTH, 50, Image.SCALE_SMOOTH)));
+        techo.setBounds(0,0, WIDTH,40);
+        layeredPane.add(techo,new Integer(2));
+        roof.setRectangle(techo.getBounds());
         
         arbol1 = new JLabel(new ImageIcon(tree1.getObstaculo().getImage().getScaledInstance(250, 420, Image.SCALE_SMOOTH))) ;       
         arbol1.setBounds(WIDTH, 270, 250, 420); 
@@ -121,11 +133,15 @@ public class Screen extends JFrame{
         
         
         // temporal mostrar rectángulos para ver colisiones
-        /*pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
+        /*
+        pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol2.setBorder(BorderFactory.createLineBorder(Color.RED));
         nube1.setBorder(BorderFactory.createLineBorder(Color.RED));
-        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));*/
+        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));
+        pasto.setBorder(BorderFactory.createLineBorder(Color.RED));
+        techo.setBorder(BorderFactory.createLineBorder(Color.RED));
+        */
     }
     
     /**
@@ -169,6 +185,30 @@ public class Screen extends JFrame{
         bird.setRectangle(pajaro.getBounds());
     }
     
+    
+    //Método no implementado
+    public void moverFronteras(Obstaculo roof, Obstaculo grass){
+        if(grass.getX()<=-pasto.getWidth()/5){
+            grass.setX(WIDTH);
+            pasto.setLocation(grass.getX(), 645);
+            grass.setRectangle(pasto.getBounds());
+        }
+        
+       if(roof.getX()<=-techo.getWidth()){
+            roof.setX(WIDTH+techo.getWidth());
+            techo.setLocation(roof.getX(), 0);
+            roof.setRectangle(techo.getBounds());
+        }
+        
+        grass.setX(grass.getX()-10);
+        pasto.setLocation(grass.getX(), 645);
+        grass.setRectangle(pasto.getBounds());
+        
+        roof.setX(roof.getX()-10);
+        techo.setLocation(roof.getX(), 0);
+        roof.setRectangle(techo.getBounds());
+    }
+    
     /**
      * Método encargado de mover los árboles por la pantalla decrementando su valor en X.
      * @param tree1 Objeto tipo Obstaculo que representa el árbol 1.
@@ -203,7 +243,7 @@ public class Screen extends JFrame{
     }
     
     /**
-     * Método encargado de mover las nubes por la pantalla decrementando su valor en X.
+     * Método encargado de mover las nubes por la pantalla decrementando su valor en X y calculando su altura en Y.
      * @param cloud1 Objeto tipo Obstaculo que representa la nube 1.
      * @param cloud2 Objeto tipo Obstaculo que representa la nube 2.
      */
@@ -231,48 +271,3 @@ public class Screen extends JFrame{
         cloud2.setRectangle(nube2.getBounds());
     }
 }
-//
-//class ImagePanel extends JComponent {
-//    private Image image;
-//    public ImagePanel(Image image) {
-//        this.image = image;
-//    }
-//    @Override
-//    protected void paintComponent(Graphics g) {
-//        super.paintComponent(g);
-//        g.drawImage(image, 0, 0, this);
-//    }
-//}
-//
-//
-//class JPanelBackground extends JPanel {
-// 
-//	// Atributo que guardara la imagen de Background que le pasemos.
-//	private Image background;
-// 
-//	// Metodo que es llamado automaticamente por la maquina virtual Java cada vez que repinta
-//	public void paintComponent(Graphics g) {
-// 
-//		// Obtenemos el tamaño del panel para hacer que se ajuste a este
-//		//cada vez que redimensionemos la ventana y se lo pasamos al drawImage 
-//		int width = this.getSize().width;
-//		int height = this.getSize().height;
-// 
-//		// Mandamos que pinte la imagen en el panel
-//		if (this.background != null) {
-//			g.drawImage(this.background, 0, 0, width, height, null);
-//		}
-// 
-//		super.paintComponent(g);
-//	}
-// 
-//	// Metodo donde le pasaremos la dirección de la imagen a cargar.
-//	public void setBackground(String imagePath) {
-//		
-//		// Construimos la imagen y se la asignamos al atributo background.
-//		this.setOpaque(false);
-//		this.background = new ImageIcon(imagePath).getImage();
-//		repaint();
-//	}
-// 
-//}

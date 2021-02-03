@@ -17,14 +17,27 @@ public class Obstaculo {
 
     /**
      * Dependiendo del entero recibido se iniciará la correspondiente imagen
-     * @param n Entero para elegir la imagen que representará el objeto. 0 para árbol; cualquier otro para nube.
+     * @param n Entero para elegir la imagen que representará el objeto. 0 para árbol, 1 para nube, 2 para cesped, 3 para techo.
      */
     public Obstaculo(int n) {  
-        if(n == 0)
-           obs = new ImageIcon("tree0.png"); 
         
-        else
-           obs = new ImageIcon("nube2.png");
+        switch(n){
+            case 0:
+                obs = new ImageIcon("tree0.png");
+                break;
+            case 1:
+                obs = new ImageIcon("nube2.png");
+                break;
+            case 2:
+                obs = new ImageIcon("grass.png");
+                break;
+            case 3:
+                obs = new ImageIcon("roof.png");
+                break;
+            default:
+                System.exit(-1);
+        }
+        
         
         WIDTH = obs.getIconWidth();
         HEIGHT = obs.getIconHeight();

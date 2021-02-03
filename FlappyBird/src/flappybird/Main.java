@@ -22,11 +22,13 @@ public class Main {
         Obstaculo arbol2 = new Obstaculo(0);
         Obstaculo nube1 = new Obstaculo(1);
         Obstaculo nube2 = new Obstaculo(1);
+        Obstaculo pasto = new Obstaculo(2);
+        Obstaculo techo = new Obstaculo(3);
         Screen screen = new Screen();
         Sonidos sonidos = new Sonidos();
         //screen.colocarBotones();
         
-        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,true);
+        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo,true);
         
         controller.jugar();
         
