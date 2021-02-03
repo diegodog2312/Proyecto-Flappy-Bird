@@ -610,7 +610,6 @@ public class Screen extends JFrame{
         puntaje.setForeground(color);
     } 
     
-   
     public void showHighscores(Scores scores){
         tableroPuntaje tablero = new tableroPuntaje(scores);
         
@@ -618,16 +617,15 @@ public class Screen extends JFrame{
         frame.setUndecorated(true);
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
-        frame.setSize(330, 220); 
+        frame.setSize(240, 180); 
         JPanel panel = new JPanel(); 
         
         ImageIcon imgRegreso = new ImageIcon("Button.png");   
         
         
-        JButton back = new JButton("Regresar");//new ImageIcon(imgRegreso.getImage().getScaledInstance(90, 30, Image.SCALE_SMOOTH))); //Por si se quiere agregar mejor una imagen
+        JButton back = new JButton("Regresar");
+        //Por si se quiere agregar mejor una imagen
         back.setBorder(BorderFactory.createEmptyBorder());
-        //back.setContentAreaFilled(false);
-        //back.setBorderPainted(false);
         back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel.add(back);
         frame.add(tablero);
@@ -639,5 +637,6 @@ public class Screen extends JFrame{
            frame.setVisible(false);
        });
     }
+  
     
 }

@@ -7,7 +7,7 @@ public class tableroPuntaje extends javax.swing.JPanel {
     Scores scores;
             
     public tableroPuntaje(Scores scores) {
-        this.setSize(290, 220);
+        this.setSize(240, 180);
         this.scores = scores;
     }
 
@@ -27,7 +27,7 @@ public class tableroPuntaje extends javax.swing.JPanel {
         grafico.setColor(color);
         grafico.setFont(new Font("Serif", Font.BOLD, 20));
         grafico.setColor(java.awt.Color.black);
-        drawString(grafico,scores.toString(),35,30);
+        drawString(grafico,scores.toString(),77,30);
         
         setOpaque(false);
         super.paintComponent(grafico);
