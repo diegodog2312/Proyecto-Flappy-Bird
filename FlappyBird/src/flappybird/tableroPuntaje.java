@@ -25,11 +25,9 @@ public class tableroPuntaje extends javax.swing.JPanel {
 
         Color color = new Color(41,176,76);
         grafico.setColor(color);
-        grafico.setFont(new Font("Serif", Font.BOLD, 23));
-        grafico.drawString("HIGHSCORES",45,50);
         grafico.setFont(new Font("Serif", Font.BOLD, 20));
         grafico.setColor(java.awt.Color.black);
-        drawString(grafico,scores.toString(),35,65);
+        drawString(grafico,scores.toString(),35,30);
         
         setOpaque(false);
         super.paintComponent(grafico);
