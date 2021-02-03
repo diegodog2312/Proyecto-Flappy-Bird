@@ -1,16 +1,19 @@
 package flappybird;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
- * Clase Controller, encargada de controlar el estado del juego, a través de ella se iniciará el juego y se verificarán las colisiones en todo momento.
+ * Clase Controller, encargada de controlar el estado del juego, a través de
+ * ella se iniciará el juego y se verificarán las colisiones en todo momento.
+ *
  * @author Proyecto POO
  */
 public class Controller {
+
     private Bird bird;
     private Obstaculo tree1;
     private Obstaculo tree2;
@@ -22,11 +25,12 @@ public class Controller {
     private int puntaje = 0;
     private Sonidos sonido;
     boolean contado = true;
-    boolean running =  true;
+    boolean running = true;
 
     /**
      * Constructor de la clase.
-     * @param bird  Objeto tipo bird (Quetzal).
+     *
+     * @param bird Objeto tipo bird (Quetzal).
      * @param tree1 Objeto tipo Obstaculo que representará el árbol 1.
      * @param tree2 Objeto tipo Obstaculo que representará el árbol 2.
      * @param nube1 Objeto tipo Obstaculo que representará la nube 1.
@@ -34,7 +38,7 @@ public class Controller {
      * @param screen Objeto tipo Screen para mostrarla en pantalla.
      * @param mostrar Booleano para decidir si se muestra la pantalla.
      */
-    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos,Obstaculo pasto, Obstaculo techo,boolean mostrar) {
+    public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos, Obstaculo pasto, Obstaculo techo) {
         this.bird = bird;
         this.tree1 = tree1;
         this.tree2 = tree2;
@@ -44,31 +48,18 @@ public class Controller {
         this.sonido = sonidos;
         this.pasto = pasto;
         this.techo = techo;
-        screen.colocarComponentes();
-        //screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
-        screen.setVisible(mostrar);
-        initController();
-    }
-    
-    /**
-     * @deprecated
-     * Método para mostrar la pantalla de juego
-     */
-    public void mostrar(){
-        //screen.setVisible(true);
         screen.setVisible(true);
-        
+        screen.juego(bird, tree1, tree2, nube1, nube2, pasto, techo, puntaje);
     }
-    
+
     /**
      * Método para verificar la entrada por ratón.
      */
-    public void initController(){
+    public void initController() {
         MouseListener ml = new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) { 
-                screen.volar(bird);  
-                //jugar();
+            public void mouseClicked(MouseEvent e) {
+                screen.volar(bird);
             }
 
             @Override
@@ -85,147 +76,162 @@ public class Controller {
 
             @Override
             public void mouseExited(MouseEvent e) {
-            }                                
+            }
         };
-        
+
         screen.addMouseListener(ml);
-                
+
+        screen.getBplay().addActionListener(e -> {
+            screen.getBplay().setVisible(false);
+            screen.getMenu().setVisible(false);
+            start();           
+            musica();
+        });
+
     }
-   
+
     /**
-     * Mediante este método se inicia el juego: se colocan los componentes y personajes, se valida, mientras el quetzal esté vivo, si ocurrió una colisión o si se aumenta el puntaje.
-     * @throws InterruptedException En caso de no poder dormir al hilo se lanzará esta excepción.
+     * Mediante este método se inicia el juego: se colocan los componentes y
+     * personajes, se valida, mientras el quetzal esté vivo, si ocurrió una
+     * colisión o si se aumenta el puntaje.
+     *
+     * @throws InterruptedException En caso de no poder dormir al hilo se
+     * lanzará esta excepción.
      */
-    public void jugar() throws InterruptedException{
-        //screen.colocarComponentes();
-        screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, pasto, techo,puntaje);
-        //screen.setVisible(true);
-        screen.revalidate();
-        sonido.reproducirLoop("fondo.wav");
-        sonido.reproducirLoop("volando.wav");
-        //while(this.bird.getY()!=screen.getWidth()){
-            
-            // valor prueba 
-            while(!bird.isMuerto()){
-                screen.caer(bird);           
-                screen.moverArboles(tree1, tree2);
-                screen.moverNubes(nube1, nube2);
-//                screen.moverFronteras(techo, pasto);
-                Thread.sleep(80);
-                if(colision()){
-                  System.out.println("Choco");
-                    sonido.stop();
-                    sonido.stop();
-                    bird.Matar();
-                    sonido.reproducirSonido("muerte.wav");
-                    //Thread.sleep(1000);
-                               
-                }else{
-                   System.out.println("No choco");
-                    // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
-                    if(tree1.getX() +40<= bird.getX() & contado){
-                       puntaje++;
-                       screen.sumarPunto(puntaje);
-                       contado = false;
-                       sonido.reproducirSonido("puntito.wav");
+    public void start() {                
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!bird.isMuerto()) {
+                    screen.caer(bird);
+                    screen.moverArboles(tree1, tree2);
+                    screen.moverNubes(nube1, nube2);
+                    try {
+                        Thread.sleep(80);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
-                    // si todavia no se cuenta el arbol 2, suma un punto por haberlo pasado
-                    if(tree2.getX()+40<= bird.getX() & !contado){
-                       puntaje++;
-                       screen.sumarPunto(puntaje);
-                       contado = true;
-                       sonido.reproducirSonido("puntito.wav");
+                    if (colision()) {
+                        sonido.stop();
+                        sonido.stop();
+                        bird.Matar();
+                        sonido.reproducirSonido("muerte.wav");                        
+                        gameOver();  
+                        
+                    } else {
+                        // si todavia no se cuenta el arbol 1, suma un punto por haberlo pasado
+                        if (tree1.getX() + 40 <= bird.getX() & contado) {
+                            puntaje++;
+                            screen.sumarPunto(puntaje);
+                            contado = false;
+                            sonido.reproducirSonido("puntito.wav");
+                        }
+                        // si todavia no se cuenta el arbol 2, suma un punto por haberlo pasado
+                        if (tree2.getX() + 40 <= bird.getX() & !contado) {
+                            puntaje++;
+                            screen.sumarPunto(puntaje);
+                            contado = true;
+                            sonido.reproducirSonido("puntito.wav");
+                        }
                     }
-                            
-                }   
+                }
+                puntaje(puntaje);
             }
-        //}
-        puntaje(puntaje);
+        });                
+        t1.start();       
     }
     
-    public void gameOver(){
-        // abilita botones finales
-       screen.setButtons(true);
-       screen.mostrarPuntaje(puntaje);
-       // si se presiona restart
-        screen.getRestartButton().addActionListener( new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                // se esconden botones
-                screen.setButtons(false);
-                System.out.println("Los botones funcionna ");
-                
-                //setRunning(true);
-                // limpia pantalla
-                screen.clearScreen();
+    public void musica(){
+        Thread t2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                sonido.reproducirLoop("fondo.wav");
+                sonido.reproducirLoop("volando.wav");                                                 
             }
-        }); 
+        });
+        t2.start();
     }
-    
-    public void setRunning(boolean bol){
-        running =  bol;
+
+    public void gameOver() {
+        screen.mostrarPuntaje(puntaje);
+        screen.getBrestart().addActionListener(e -> {
+            screen.getPuntajeFinal().setVisible(false);
+            screen.getBrestart().setVisible(false);
+            screen.getBleaderBoard().setVisible(false);
+            screen.setOriginalPositions(bird, tree1, tree2, tree1, tree2, puntaje);
+            bird.Vivir();
+            start();
+        });
+        
+       screen.getBleaderBoard().addActionListener(e->{
+           JOptionPane.showMessageDialog(screen, "PUNTAJES");
+       });
     }
-    
-    public boolean running(){
-        return running;
-    }
+
     /**
      * Método para revisar las colisiones
+     *
      * @return Si ocurrió una colisión regresará true; caso contrario, false.
      */
-    public boolean colision(){
-       
-       // si choca con alguno regresa verdadero
-       if(collisionA() || collisionB() || collisionC()){
-           //JOptionPane.showMessageDialog(screen, "Choco");
-           return true;
-       }
-       //JOptionPane.showMessageDialog(screen, "No choco");
-       return false;
+    public boolean colision() {
+        // si choca con alguno regresa verdadero
+        if (collisionA() || collisionB() || collisionC()) {
+            return true;
+        }
+        return false;
     }
-    
+
     /**
      * Método para revisar las colisiones entre el quetzal y los árboles
-     * @return True si ocurrió una colisión, false si no ocurrió ninguna colisión.
+     *
+     * @return True si ocurrió una colisión, false si no ocurrió ninguna
+     * colisión.
      */
-    public boolean collisionA(){
-        if(bird.getRectangle().intersects(tree1.getRectangle()) || bird.getRectangle().intersects(tree2.getRectangle()))
+    public boolean collisionA() {
+        if (bird.getRectangle().intersects(tree1.getRectangle()) || bird.getRectangle().intersects(tree2.getRectangle())) {
             return true;
+        }
         return false;
     }
-    
+
     /**
      * Método para revisar las colisiones entre el quetzal y las nubes
-     * @return True si ocurrió una colisión, false si no ocurrió ninguna colisión.
+     *
+     * @return True si ocurrió una colisión, false si no ocurrió ninguna
+     * colisión.
      */
-    public boolean collisionB(){
-        if(bird.getRectangle().intersects(nube1.getRectangle()) || bird.getRectangle().intersects(nube2.getRectangle()))
+    public boolean collisionB() {
+        if (bird.getRectangle().intersects(nube1.getRectangle()) || bird.getRectangle().intersects(nube2.getRectangle())) {
             return true;
+        }
         return false;
     }
-    
-    public boolean collisionC(){
-        if(bird.getRectangle().intersects(pasto.getRectangle()) || bird.getRectangle().intersects(techo.getRectangle()))
+
+    public boolean collisionC() {
+        if (bird.getRectangle().intersects(pasto.getRectangle()) || bird.getRectangle().intersects(techo.getRectangle())) {
             return true;
+        }
         return false;
     }
-    
+
     /**
      * Mediante este método se verificará y escribirá el puntaje.
+     *
      * @param nuevoPuntaje Puntaje obtenido durante la partida.
      */
-    public void puntaje(int nuevoPuntaje){
-       Scores scores = new Scores();
-       ScoresFile scoresFile = new ScoresFile();
-       scoresFile.cargarPuntaje(scores);
-       Score score = new Score(nuevoPuntaje);
-       scores.anadirPuntaje(score);
-       System.out.println(scores.toString());
-       scoresFile.guardarPuntos(scores);
+    public void puntaje(int nuevoPuntaje) {
+        Scores scores = new Scores();
+        ScoresFile scoresFile = new ScoresFile();
+        scoresFile.cargarPuntaje(scores);
+        Score score = new Score(nuevoPuntaje);
+        scores.anadirPuntaje(score);
+        System.out.println(scores.toString());
+        scoresFile.guardarPuntos(scores);
     }
-    
+
     /**
      * Getter del quetzal.
+     *
      * @return Objeto tipo Bird (Quetzal).
      */
     public Bird getBird() {
@@ -234,6 +240,7 @@ public class Controller {
 
     /**
      * Setter del quetzal.
+     *
      * @param bird Objeto tipo Bird (Quetzal) para asignarse.
      */
     public void setBird(Bird bird) {
@@ -242,6 +249,7 @@ public class Controller {
 
     /**
      * Getter del árbol 1.
+     *
      * @return Objeto tipo Obstaculo (tree1).
      */
     public Obstaculo getTree1() {
@@ -250,6 +258,7 @@ public class Controller {
 
     /**
      * Setter del árbol 1.
+     *
      * @param tree1 Objeto tipo Obstaculo.
      */
     public void setTree1(Obstaculo tree1) {
@@ -258,6 +267,7 @@ public class Controller {
 
     /**
      * Getter del árbol 2.
+     *
      * @return Objeto tipo Obstaculo (tree2).
      */
     public Obstaculo getTree2() {
@@ -266,6 +276,7 @@ public class Controller {
 
     /**
      * Setter del árbol 2.
+     *
      * @param tree2 Objeto tipo Obstaculo.
      */
     public void setTree2(Obstaculo tree2) {
@@ -274,6 +285,7 @@ public class Controller {
 
     /**
      * Getter de la pantalla (objeto tipo Screen).
+     *
      * @return Pantalla (screen).
      */
     public Screen getScreen() {
@@ -282,9 +294,10 @@ public class Controller {
 
     /**
      * Setter de la pantalla.
+     *
      * @param screen Pantalla a asignarse a screen.
      */
     public void setScreen(Screen screen) {
         this.screen = screen;
-    }            
+    }
 }

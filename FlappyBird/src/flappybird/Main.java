@@ -1,10 +1,5 @@
 package flappybird;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Toolkit;
-import javax.swing.JFrame;
-
 /**
  * Clase principal, en esta clase se tendrá al método main para dar inicio al programa.
  * @author Proyecto POO
@@ -26,50 +21,8 @@ public class Main {
         Obstaculo techo = new Obstaculo(3);
         Screen screen = new Screen();
         Sonidos sonidos = new Sonidos();
-        //screen.colocarBotones();
-        
-        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo,true);
-        
-        
-       //controller.jugar();
-        
-        Thread t1 = new Thread(new Runnable() 
-        { 
-            @Override
-            public void run() 
-            { 
-                try
-                { 
-                    controller.jugar();
-                } 
-                catch(InterruptedException e) 
-                { 
-                   
-                } 
-            } 
-        }); 
-  
-        
-  
-        t1.start(); 
-        t1.join(); 
-        controller.gameOver();
-        t1.start();
-/*        Cuadro frame = new Cuadro(controller);
-        frame.setSize(518,724);
-        frame.setLocationRelativeTo(null);
-        frame.setResizable(false);
-        frame.setLayout(new CardLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        NewJPanel p_inicio = new NewJPanel(controller);
-        frame.add(p_inicio,BorderLayout.CENTER);
-        frame.add(screen.layeredPane);
-        p_inicio.setOpaque(true);
-        frame.setUndecorated(true);
-        frame.setVisible(true);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));
-        frame.revalidate();
-        frame.repaint();*/        
-    }
-    
+
+        Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo);
+        controller.initController();
+    }    
 }

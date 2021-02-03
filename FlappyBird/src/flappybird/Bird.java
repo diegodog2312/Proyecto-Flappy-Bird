@@ -93,8 +93,8 @@ public class Bird {
      * @param rectangle Rectángulo del cual se obtendrán los tamaños.
      */
     public void setRectangle(Rectangle rectangle) {
-        this.rectangle.height = rectangle.height-20;
-        this.rectangle.width = rectangle.width-20;
+        this.rectangle.height = rectangle.height-25;
+        this.rectangle.width = rectangle.width-25;
         this.rectangle.x = rectangle.x;
         this.rectangle.y = rectangle.y;
     }
