@@ -173,7 +173,8 @@ public class Controller {
         });
         
        screen.getBleaderBoard().addActionListener(e->{
-           JOptionPane.showMessageDialog(screen, "PUNTAJES");
+           pantallaPuntaje pantallaPuntos = new pantallaPuntaje();
+           //JOptionPane.showMessageDialog(screen, "PUNTAJES");
        });
     }
 

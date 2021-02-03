@@ -21,6 +21,7 @@ public class tableroPuntaje extends javax.swing.JPanel {
 
     } 
 
+    @Override
     public void paint(Graphics grafico) {
         Dimension height = getSize();
         ImageIcon Img = new ImageIcon(getClass().getResource("fondo.png")); 

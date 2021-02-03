@@ -48,7 +48,6 @@ public class Sonidos {
      *Método para detener la reproducción del vuelo del quetzal.
      */
     public void stop(){
-        System.out.println("stopp");
         vuelo.stop();
         vuelo.flush();
         vuelo.close();
