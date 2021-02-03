@@ -506,9 +506,9 @@ public class Screen extends JFrame{
         
         
         JButton back = new JButton("Regresar");//new ImageIcon(imgRegreso.getImage().getScaledInstance(90, 30, Image.SCALE_SMOOTH))); //Por si se quiere agregar mejor una imagen
-        //back.setBorder(null);
-        back.setContentAreaFilled(false);
-        back.setBorderPainted(false);
+        back.setBorder(BorderFactory.createEmptyBorder());
+        //back.setContentAreaFilled(false);
+        //back.setBorderPainted(false);
         back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         panel.add(back);
         frame.add(tablero);
