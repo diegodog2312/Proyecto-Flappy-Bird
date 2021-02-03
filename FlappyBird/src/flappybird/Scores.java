@@ -55,7 +55,7 @@ public class Scores  {
     @Override
     public String toString() {
         String resultado = "";
-        String strDateFormat="dd-MMM-aa";
+        String strDateFormat="dd/MMM/yy  hh:mm:ss";
         Date fechaCompleta = new Date();
         SimpleDateFormat fechaCorta=new SimpleDateFormat(strDateFormat);
         for(int i=0; i<=listaPuntajes.size()-1; i++) {

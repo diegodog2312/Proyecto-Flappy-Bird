@@ -45,6 +45,7 @@ public class Screen extends JFrame{
         getContentPane().add(layeredPane);    
         menuInicio();
         puntos=0;
+        setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
     }
     
     public void menuInicio(){          
@@ -56,7 +57,7 @@ public class Screen extends JFrame{
         Bplay.setEnabled(true);
         Bplay.setVisible(true);
         layeredPane.add(Bplay, new Integer(100));
-        
+        Bplay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ImageIcon bg = new ImageIcon("fondomenur.jpg");
         menu = new JLabel();
         menu.setIcon(bg);
@@ -197,13 +198,13 @@ public class Screen extends JFrame{
         Brestart.setContentAreaFilled(false);
         Brestart.setBounds(100, 400,120, 70);        
         Brestart.setVisible(true);
-        
+        Brestart.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BleaderBoard = new JButton(new ImageIcon(imgL.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         BleaderBoard.setBorder(BorderFactory.createEmptyBorder());
         BleaderBoard.setContentAreaFilled(false);
         BleaderBoard.setBounds(270, 400,120, 70);        
         BleaderBoard.setVisible(true);
-                
+        BleaderBoard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         layeredPane.add(Brestart, new Integer(5));
         layeredPane.add(BleaderBoard, new Integer(5));      
     }
@@ -494,19 +495,30 @@ public class Screen extends JFrame{
     public void showHighscores(Scores scores){
         tableroPuntaje tablero = new tableroPuntaje(scores);
         
-        JFrame frame = new JFrame("Puntaje");       
+        JFrame frame = new JFrame("Puntaje");
+        frame.setUndecorated(true);
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
-        frame.setSize(290, 220); 
+        frame.setSize(330, 220); 
         JPanel panel = new JPanel(); 
-        JButton back = new JButton("Regresar");
-        panel.add(back);        
-        JPanel panelImagen=new JPanel();
-        panelImagen.add(tablero);
-        panelImagen.repaint();
-        frame.getContentPane().add(BorderLayout.CENTER, panel);    
+        
+        ImageIcon imgRegreso = new ImageIcon("Button.png");   
+        
+        
+        JButton back = new JButton("Regresar");//new ImageIcon(imgRegreso.getImage().getScaledInstance(90, 30, Image.SCALE_SMOOTH))); //Por si se quiere agregar mejor una imagen
+        //back.setBorder(null);
+        back.setContentAreaFilled(false);
+        back.setBorderPainted(false);
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel.add(back);
+        frame.add(tablero);
+        frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.setLocationRelativeTo(null);
-        frame.getContentPane().add(tablero);
+        
         frame.setVisible(true);  
+        back.addActionListener(e->{
+           frame.setVisible(false);
+       });
     }
     
 }
