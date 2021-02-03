@@ -2,6 +2,8 @@ package flappybird;
 
 import java.awt.*;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -212,12 +214,7 @@ public class Screen extends JFrame{
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
      * @param bird Objeto tipo Bird (que representa el quetzal).
      */
-    public void volar(Bird bird){               
-        ImageIcon imagen = new ImageIcon("quetzal2.png");                         
-        bird.setBird(imagen);
-        imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));
-        pajaro.setIcon(imagen);
-        
+    public void volar(Bird bird){                       
         bird.setY(bird.getY()-60);
         bird.setX(bird.getX());
         pajaro.setLocation(bird.getX(), bird.getY());   
@@ -228,18 +225,112 @@ public class Screen extends JFrame{
      * Método encargado de la caída del quetzal, se define su imagen así como cuánto disminuye en la coordenada Y.
      * @param bird Objeto tipo Bird (que representa el quetzal).
      */
-    public void caer(Bird bird){
-        ImageIcon imagen = new ImageIcon("quetzal.png");         
-        bird.setBird(imagen);        
-        imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
-        pajaro.setIcon(imagen);
-        
-        
+    public void caer(Bird bird){                
         bird.setY(bird.getY()+10);
         bird.setX(bird.getX());
         pajaro.setLocation(bird.getX(), bird.getY());       
         bird.setRectangle(pajaro.getBounds());
     }          
+    
+    public void movimientoBird(Bird bird){
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(!bird.isMuerto()){
+                    ImageIcon imagen = new ImageIcon("quetzal11.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal11.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal13.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal21.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal22.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal23.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal31.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal32.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    imagen = new ImageIcon("quetzal33.png");         
+                    bird.setBird(imagen);        
+                    imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
+                    pajaro.setIcon(imagen);     
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
+                    }                    
+                }                                                
+            }
+        });
+        t.start();
+    }
     
     /**
      * Método encargado de mover los árboles por la pantalla decrementando su valor en X.

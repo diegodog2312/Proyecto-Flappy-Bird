@@ -101,7 +101,8 @@ public class Controller {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!bird.isMuerto()) {
+                screen.movimientoBird(bird);
+                while (!bird.isMuerto()) {                    
                     screen.caer(bird);
                     screen.moverArboles(tree1, tree2);
                     screen.moverNubes(nube1, nube2);
