@@ -1,9 +1,11 @@
 package flappybird;
 
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -87,7 +89,7 @@ public class Controller {
             screen.getTitulo().setVisible(false);
             screen.getGif().setVisible(false);
             start();           
-            //musica();
+            //musica();            
         });
 
     }
@@ -97,11 +99,11 @@ public class Controller {
      * personajes, se valida, mientras el quetzal esté vivo, si ocurrió una
      * colisión o si se aumenta el puntaje.
      */
-    public void start() {                
+    public void start() {   
+        screen.movimientoBird(bird);
         Thread t1 = new Thread(new Runnable() {
             @Override
-            public void run() {
-                screen.movimientoBird(bird);
+            public void run() {               
                 while (!bird.isMuerto()) {                    
                     screen.caer(bird);
                     screen.moverArboles(tree1, tree2);
@@ -137,8 +139,8 @@ public class Controller {
                 }
                 puntaje(puntaje);
             }
-        });                
-        t1.start();       
+        });                                                
+        t1.start();                
     }
     
     public void musica(){
@@ -171,7 +173,7 @@ public class Controller {
        screen.getBleaderBoard().addActionListener(e->{
            screen.showHighscores(scores); 
        });
-    }
+    }        
 
     /**
      * Método para revisar las colisiones

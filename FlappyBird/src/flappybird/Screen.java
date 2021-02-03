@@ -242,7 +242,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -252,7 +252,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -262,7 +262,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -272,7 +272,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -282,7 +282,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -292,7 +292,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -302,7 +302,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -312,7 +312,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -322,7 +322,7 @@ public class Screen extends JFrame{
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(50);
                     } catch (InterruptedException ex) {
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }                    
