@@ -26,6 +26,7 @@ public class Controller {
     private Sonidos sonido;
     boolean contado = true;
     boolean running = true;
+    private int maxPuntaje = 0;
 
     /**
      * Constructor de la clase.
@@ -149,20 +150,21 @@ public class Controller {
     }
 
     public void gameOver() {
-        screen.mostrarPuntaje(puntaje);
+        Scores scores = puntaje(puntaje);
+        screen.mostrarPuntaje(puntaje, maxPuntaje);
         screen.getBrestart().addActionListener(e -> {
             System.out.println("restart");
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
             screen.getBleaderBoard().setVisible(false);
             puntaje=0;
-            screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, pasto,techo,0);
+            screen.setOriginalPositions(bird, tree1, tree2, nube1, nube2, pasto,techo,puntaje);
             bird.Vivir();
             start();
         });
         
        screen.getBleaderBoard().addActionListener(e->{
-           JOptionPane.showMessageDialog(screen, "PUNTAJES");
+           screen.showHighscores(scores); 
        });
     }
 
@@ -217,7 +219,7 @@ public class Controller {
      *
      * @param nuevoPuntaje Puntaje obtenido durante la partida.
      */
-    public void puntaje(int nuevoPuntaje) {
+    public Scores puntaje(int nuevoPuntaje) {
         Scores scores = new Scores();
         ScoresFile scoresFile = new ScoresFile();
         scoresFile.cargarPuntaje(scores);
@@ -225,6 +227,8 @@ public class Controller {
         scores.anadirPuntaje(score);
         System.out.println(scores.toString());
         scoresFile.guardarPuntos(scores);
+        maxPuntaje = scores.maxScore();
+        return scores;
     }
 
     /**

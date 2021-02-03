@@ -58,11 +58,16 @@ public class Scores  {
         String strDateFormat="dd-MMM-aa";
         Date fechaCompleta = new Date();
         SimpleDateFormat fechaCorta=new SimpleDateFormat(strDateFormat);
-        for(int i=listaPuntajes.size()-1; i<=listaPuntajes.size()-1; i++) {
+        for(int i=0; i<=listaPuntajes.size()-1; i++) {
             Score puntuacion = listaPuntajes.get(i);
-            resultado += i + (fechaCorta.format(fechaCompleta)) +"Puntaje obtenido"+ ": " + puntuacion.getPuntos() + "\n";
+            resultado += (i+1) +"  " + (fechaCorta.format(fechaCompleta)) + "  : " + puntuacion.getPuntos() + " pts\n";
         }
         return resultado;
+    }
+    
+    public int maxScore(){
+        Score puntuacion = listaPuntajes.get(0);
+        return puntuacion.getPuntos();
     }
        
 }

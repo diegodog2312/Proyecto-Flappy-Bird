@@ -18,6 +18,7 @@ public class Screen extends JFrame{
     private JLabel menu;
     private JLabel pasto;
     private JLabel techo;    
+    private JLabel max;
     private JLabel puntaje;
     private JLabel puntajeFinal;
     private JButton Bplay;
@@ -154,34 +155,44 @@ public class Screen extends JFrame{
         puntaje.setText(String.valueOf(puntos));
     }
     
-    public void mostrarPuntaje(int score){
+    public void mostrarPuntaje(int score, int maxPuntaje){
         ImageIcon imgS = new ImageIcon("WResult.png");
         
         puntajeFinal = new JLabel(new ImageIcon(imgS.getImage().getScaledInstance(220, 270, Image.SCALE_SMOOTH)));
         puntajeFinal.setBounds(137, 100, 220, 270);
+        puntajeFinal.setLocation((this.getWidth()-puntajeFinal.getWidth())/2,100);
         layeredPane.add(puntajeFinal, new Integer(5));
         
         puntaje.setBounds(240,186,30,30);
         Color color = new Color(92,60,6);
         puntaje.setForeground(color);
+        puntaje.setLocation((this.getWidth()-puntaje.getWidth())/2,186);
+        
+        max = new JLabel(String.valueOf(maxPuntaje));
+        max.setBounds(235,285,30,30);
+        max.setFont(new Font("Serif", Font.BOLD, 25));
+        max.setForeground(color);
+        max.setLocation((this.getWidth()-max.getWidth())/2,285);
+        layeredPane.add(max, new Integer(6));
+        
         
         ImageIcon imgR = new ImageIcon("BRestart.png");
-        ImageIcon imgL = new ImageIcon("BLeaderboard.png");
+        ImageIcon imgL = new ImageIcon("BLeaderboard.png");                
         
         Brestart = new JButton(new ImageIcon(imgR.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         Brestart.setBorder(BorderFactory.createEmptyBorder());
         Brestart.setContentAreaFilled(false);
-        Brestart.setBounds(100, 400,120, 70);
+        Brestart.setBounds(100, 400,120, 70);        
         Brestart.setVisible(true);
         
         BleaderBoard = new JButton(new ImageIcon(imgL.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         BleaderBoard.setBorder(BorderFactory.createEmptyBorder());
         BleaderBoard.setContentAreaFilled(false);
-        BleaderBoard.setBounds(270, 400,120, 70);
+        BleaderBoard.setBounds(270, 400,120, 70);        
         BleaderBoard.setVisible(true);
-        
+                
         layeredPane.add(Brestart, new Integer(5));
-        layeredPane.add(BleaderBoard, new Integer(5));
+        layeredPane.add(BleaderBoard, new Integer(5));      
     }
     /**
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
@@ -401,6 +412,7 @@ public class Screen extends JFrame{
     
      // coloca personajes en punto original 
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){
+        layeredPane.remove(max);
         pajaro.setBounds(0, 0, 85, 85);
         bird.setX(50);
         bird.setY(50);
@@ -442,19 +454,22 @@ public class Screen extends JFrame{
     } 
     
    
-    // quita solo personajes y reinicia a puntaje
- /*   public void clearScreen(){
-        layeredPane.remove(pajaro);
-        layeredPane.remove(arbol1);
-        layeredPane.remove(nube1);
-        layeredPane.remove(nube2);
-        layeredPane.remove(arbol2);
-        layeredPane.remove(puntajeFinal);
-        Color color = new Color(229,255,205);
-        puntaje.setBounds(WIDTH/2,65,30,30);
-        puntaje.setForeground(color);
-        puntaje.setText("0");
-        repaint();
-    }*/
+    public void showHighscores(Scores scores){
+        tableroPuntaje tablero = new tableroPuntaje(scores);
+        
+        JFrame frame = new JFrame("Puntaje");       
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
+        frame.setSize(290, 220); 
+        JPanel panel = new JPanel(); 
+        JButton back = new JButton("Regresar");
+        panel.add(back);        
+        JPanel panelImagen=new JPanel();
+        panelImagen.add(tablero);
+        panelImagen.repaint();
+        frame.getContentPane().add(BorderLayout.CENTER, panel);    
+        frame.setLocationRelativeTo(null);
+        frame.getContentPane().add(tablero);
+        frame.setVisible(true);  
+    }
     
 }

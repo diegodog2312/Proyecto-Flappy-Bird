@@ -24,5 +24,6 @@ public class Main {
 
         Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo);
         controller.initController();
+         
     }    
 }
