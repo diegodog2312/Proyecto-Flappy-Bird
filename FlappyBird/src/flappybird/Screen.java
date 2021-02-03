@@ -249,7 +249,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon("quetzal11.png");         
+                    imagen = new ImageIcon("quetzal12.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
