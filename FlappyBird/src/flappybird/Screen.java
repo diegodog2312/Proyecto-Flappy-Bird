@@ -153,7 +153,7 @@ public class Screen extends JFrame{
         puntaje.setForeground(color);
         layeredPane.add(puntaje, new Integer(6));
                 
-        /*
+       
         pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
         arbol2.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -161,7 +161,7 @@ public class Screen extends JFrame{
         nube2.setBorder(BorderFactory.createLineBorder(Color.RED));
         pasto.setBorder(BorderFactory.createLineBorder(Color.RED));
         techo.setBorder(BorderFactory.createLineBorder(Color.RED));
-        */
+        
     }
     
     /**
