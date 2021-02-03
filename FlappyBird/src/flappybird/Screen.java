@@ -44,6 +44,9 @@ public class Screen extends JFrame{
         puntos=0;
     }
     
+    /**
+     * Menú de inicio que mostrará una imagen de fondo y un botón para dar inicio a una partida.
+     */
     public void menuInicio(){          
         ImageIcon imgP = new ImageIcon("BPlay.png");   
         Bplay = new JButton(new ImageIcon(imgP.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
@@ -52,6 +55,7 @@ public class Screen extends JFrame{
         Bplay.setBounds(215, 350,70, 70);
         Bplay.setEnabled(true);
         Bplay.setVisible(true);
+        Bplay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         layeredPane.add(Bplay, new Integer(100));
         
         ImageIcon bg = new ImageIcon("fondomenur.jpg");
@@ -154,7 +158,10 @@ public class Screen extends JFrame{
         puntaje.setText(String.valueOf(puntos));
     }
     
-    public void mostrarPuntaje(int score){
+    /**
+     * Mediante este métodoo se mostrarán en pantalla los puntos obtenidos al finalizar una partida.
+     */
+    public void mostrarPuntaje(){
         ImageIcon imgS = new ImageIcon("WResult.png");
         
         puntajeFinal = new JLabel(new ImageIcon(imgS.getImage().getScaledInstance(220, 270, Image.SCALE_SMOOTH)));
@@ -278,128 +285,251 @@ public class Screen extends JFrame{
         cloud2.setRectangle(nube2.getBounds());
     }
             
-          
+    /**
+     * Getter del JLabel de pájaro.
+     * @return JLabel de pájaro.
+     */
     public JLabel getPajaro() {
         return pajaro;
     }
 
+    /**
+     * Setter del JLabel de pájaro.
+     * @param pajaro JLabel de pájaro para asignar.
+     */
     public void setPajaro(JLabel pajaro) {
         this.pajaro = pajaro;
     }
 
+    /**
+     * Getter del JLabel de árbol 1.
+     * @return JLabel de árbol 1.
+     */
     public JLabel getArbol1() {
         return arbol1;
     }
 
+    /**
+     * Setter del JLabel de árbol 1.
+     * @param arbol1 JLabel de árbol 1 para asignar.
+     */
     public void setArbol1(JLabel arbol1) {
         this.arbol1 = arbol1;
     }
 
+    /**
+     * Getter del JLabel de árbol 2.
+     * @return JLabel de árbol 2.
+     */
     public JLabel getArbol2() {
         return arbol2;
     }
 
+    /**
+     * Setter del JLabel de árbol 2.
+     * @param arbol2 JLabel de árbol 2 para asignar.
+     */
     public void setArbol2(JLabel arbol2) {
         this.arbol2 = arbol2;
     }
 
+    /**
+     * Getter del JLabel de nube 1.
+     * @return JLabel de nube 1.
+     */
     public JLabel getNube1() {
         return nube1;
     }
 
+    /**
+     * Setter del JLabel de nube 1.
+     * @param nube1 JLabel de nube 1 para asignar.
+     */
     public void setNube1(JLabel nube1) {
         this.nube1 = nube1;
     }
 
+    /**
+     * Getter del JLabel de nube 2.
+     * @return JLabel de nube 2.
+     */
     public JLabel getNube2() {
         return nube2;
     }
 
+    /**
+     * Setter del JLabel de nube 2.
+     * @param nube2 JLabel de nube 2 para asignar.
+     */
     public void setNube2(JLabel nube2) {
         this.nube2 = nube2;
     }
 
+    /**
+     * Getter del JLabel del fondo.
+     * @return JLabel del fondo.
+     */
     public JLabel getFondo() {
         return fondo;
     }
 
+    /**
+     * Setter del JLabel del fondo.
+     * @param fondo JLabel del fondo para asignar.
+     */
     public void setFondo(JLabel fondo) {
         this.fondo = fondo;
     }
 
+    /**
+     * Getter del JLabel del pasto.
+     * @return JLabel del pasto.
+     */
     public JLabel getPasto() {
         return pasto;
     }
 
+    /**
+     * Setter del JLabel del pasto.
+     * @param pasto JLabel del pasto para asignar.
+     */
     public void setPasto(JLabel pasto) {
         this.pasto = pasto;
     }
 
+    /**
+     * Getter del JLabel del techo.
+     * @return JLabel del techo.
+     */
     public JLabel getTecho() {
         return techo;
     }
 
+    /**
+     * Setter del JLabel del techo.
+     * @param techo JLabel del techo para asignar.
+     */
     public void setTecho(JLabel techo) {
         this.techo = techo;
     }
 
+    /**
+     * Getter del JLabel del puntaje.
+     * @return JLabel del puntaje.
+     */
     public JLabel getPuntaje() {
         return puntaje;
     }
 
+    /**
+     * Setter del JLabel del puntaje.
+     * @param puntaje JLabel del puntaje para asignar.
+     */
     public void setPuntaje(JLabel puntaje) {
         this.puntaje = puntaje;
     }
 
+    /**
+     * Getter del JLabel del puntaje final.
+     * @return JLabel del puntaje final.
+     */
     public JLabel getPuntajeFinal() {
         return puntajeFinal;
     }
 
+    /**
+     * Setter del JLabel del puntaje final.
+     * @param puntajeFinal JLabel del puntaje final para asignar.
+     */
     public void setPuntajeFinal(JLabel puntajeFinal) {
         this.puntajeFinal = puntajeFinal;
     }
 
+    /**
+     * Getter del JLabel del botón de jugar.
+     * @return JLabel del botón de jugar.
+     */
     public JButton getBplay() {
         return Bplay;
     }
 
+    /**
+     * Setter del JLabel del botón de jugar.
+     * @param Bplay JLabel del botón de jugar para asignar.
+     */
     public void setBplay(JButton Bplay) {
         this.Bplay = Bplay;
     }
 
+    /**
+     * Getter del JLabel del botón de reiniciar partida.
+     * @return JLabel del botón de reiniciar partida.
+     */
     public JButton getBrestart() {
         return Brestart;
     }
 
+    /**
+     * Setter del JLabel del botón de reiniciar partida.
+     * @param Brestart JLabel del botón de reiniciar partida para asignar.
+     */
     public void setBrestart(JButton Brestart) {
         this.Brestart = Brestart;
     }
 
+    /**
+     * Getter del JLabel del botón de leaderboards.
+     * @return JLabel del botón de leaderboards.
+     */
     public JButton getBleaderBoard() {
         return BleaderBoard;
     }
 
+    /**
+     * Setter del JLabel del botón de leaderboards.
+     * @param BleaderBoard JLabel del botón de leaderboards para asignar.
+     */
     public void setBleaderBoard(JButton BleaderBoard) {
         this.BleaderBoard = BleaderBoard;
     }
 
+    @Override
     public JLayeredPane getLayeredPane() {
         return layeredPane;
     }
 
+    @Override
     public void setLayeredPane(JLayeredPane layeredPane) {
         this.layeredPane = layeredPane;
     }
     
+    /**
+     * Getter del JLabel del menú principal.
+     * @return JLabel del menú principal.
+     */
     public JLabel getMenu() {
         return menu;
     }
 
+    /**
+     * Setter del JLabel del menú principal.
+     * @param menu JLabel del menú principal para asignar.
+     */
     public void setMenu(JLabel menu) {
         this.menu = menu;
     }
-    
-     // coloca personajes en punto original 
+
+    /**
+     * Mediante este método se vuelven a colocar los personajes en el punto original.
+     * @param bird Objeto tipo bird que representará el quetzal.
+     * @param tree1 Objeto tipo Obstaculo que representará el árbol 1.
+     * @param tree2 Objeto tipo Obstaculo que representará el árbol 2.
+     * @param cloud1 Objeto tipo Obstaculo que representará la nube 1.
+     * @param cloud2 Objeto tipo Obstaculo que representará la nube 2.
+     * @param grass Objeto tipo Obstaculo que actuará como el piso.
+     * @param roof Objeto tipo Obstaculo que actuará como el límite superior.
+     * @param score Entero que mostrará en pantalla el puntaje del jugador.
+     */
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){
         pajaro.setBounds(0, 0, 85, 85);
         bird.setX(50);
@@ -433,7 +563,7 @@ public class Screen extends JFrame{
         cloud2.setRectangle(nube2.getBounds());
         
         
-        this.puntos=score;
+        puntos=score;
         puntaje.setText(String.valueOf(puntos));
         Color color = new Color(229,255,205);
         puntaje.setBounds(WIDTH/2,65,30,30);

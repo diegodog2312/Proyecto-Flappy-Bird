@@ -36,6 +36,9 @@ public class Controller {
      * @param nube1 Objeto tipo Obstaculo que representará la nube 1.
      * @param nube2 Objeto tipo Obstaculo que representará la nube 2.
      * @param screen Objeto tipo Screen para mostrarla en pantalla.
+     * @param sonidos Objeto tipo Sonidos que nos servirá para utilizar los sonidos del juego.
+     * @param pasto Objeto tipo Obstaculo para limitar la parte inferior.
+     * @param techo Objeto tipo Obstaculo para limitar la parte superior.
      */
     public Controller(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo nube1, Obstaculo nube2, Screen screen, Sonidos sonidos, Obstaculo pasto, Obstaculo techo) {
         this.bird = bird;
@@ -90,7 +93,7 @@ public class Controller {
     }
 
     /**
-     * Mediante este método se inicia el juego: se colocan los componentes y
+     * Mediante este método se inicia el hilo del juego: se colocan los componentes y
      * personajes, se valida, mientras el quetzal esté vivo, si ocurrió una
      * colisión o si se aumenta el puntaje.
      */
@@ -137,6 +140,9 @@ public class Controller {
         t1.start();       
     }
     
+    /**
+     * Método para correr el hilo que reproducirá la música del juego.
+     */
     public void musica(){
         Thread t2 = new Thread(new Runnable() {
             @Override
@@ -148,10 +154,13 @@ public class Controller {
         t2.start();
     }
 
+    /**
+     * Método para mostrar el estado final del juego, si se desea se puede iniciar un nuevo juego.
+     */
     public void gameOver() {
-        screen.mostrarPuntaje(puntaje);
+        screen.mostrarPuntaje();
         screen.getBrestart().addActionListener(e -> {
-            System.out.println("restart");
+            //System.out.println("restart");
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
             screen.getBleaderBoard().setVisible(false);
@@ -205,6 +214,11 @@ public class Controller {
         return false;
     }
 
+    /**
+     * Método para revisar las colisiones entre el quetzal y los límites superior e inferior.
+     * @return True si ocurrió una colisión, false si no ocurrió ninguna
+     * colisión.
+     */
     public boolean collisionC() {
         if (bird.getRectangle().intersects(pasto.getRectangle()) || bird.getRectangle().intersects(techo.getRectangle())) {
             return true;

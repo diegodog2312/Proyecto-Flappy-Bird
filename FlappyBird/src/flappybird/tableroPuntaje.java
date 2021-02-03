@@ -2,7 +2,15 @@ package flappybird;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * Clase encargada de mostrar el tablero de puntajes.
+ * @author Proyecto POO
+ */
 public class tableroPuntaje extends javax.swing.JPanel {
+
+    /**
+     * Constructor de la clase, crea un panel con un tamaño de 400x400.
+     */
     public tableroPuntaje() {
         this.setSize(400, 400);
     }
