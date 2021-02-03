@@ -20,8 +20,8 @@ public class tableroPuntaje extends javax.swing.JPanel {
     public void paint(Graphics grafico) {
         Dimension height = getSize();
         
-        //ImageIcon Img = new ImageIcon(getClass().getResource("fondo.png")); 
-        //grafico.drawImage(Img.getImage(), 0, 0, height.width, height.height, null);
+        ImageIcon img = new ImageIcon("fondo.png");
+        grafico.drawImage(img.getImage(), 0, 0, height.width, height.height, null);
 
         Color color = new Color(41,176,76);
         grafico.setColor(color);
