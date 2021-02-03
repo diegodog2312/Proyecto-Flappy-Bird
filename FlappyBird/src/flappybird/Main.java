@@ -30,9 +30,31 @@ public class Main {
         
         Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo,true);
         
-        controller.jugar();
         
+       //controller.jugar();
         
+        Thread t1 = new Thread(new Runnable() 
+        { 
+            @Override
+            public void run() 
+            { 
+                try
+                { 
+                    controller.jugar();
+                } 
+                catch(InterruptedException e) 
+                { 
+                   
+                } 
+            } 
+        }); 
+  
+        
+  
+        t1.start(); 
+        t1.join(); 
+        controller.gameOver();
+        t1.start();
 //        Cuadro frame = new Cuadro(controller);
 //        frame.setSize(518,724);
 //        frame.setLocationRelativeTo(null);

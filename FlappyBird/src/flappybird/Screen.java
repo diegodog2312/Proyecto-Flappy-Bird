@@ -19,6 +19,10 @@ public class Screen extends JFrame{
     private JLabel pasto = new JLabel();
     private JLabel techo = new JLabel();    
     private JLabel puntaje = new JLabel();
+    private JLabel puntajeFinal;
+    private JButton play;
+    private JButton restart;
+    private JButton leaderBoard;
     private JLayeredPane layeredPane = new JLayeredPane();
     
     private final int HEIGHT=724;//((int) Toolkit.getDefaultToolkit().getScreenSize().getHeight())/2;
@@ -64,7 +68,34 @@ public class Screen extends JFrame{
     
     
     private void colocarBotones(){
+        ImageIcon imgP = new ImageIcon("BPlay.png");
+        ImageIcon imgR = new ImageIcon("BRestart.png");
+        ImageIcon imgL = new ImageIcon("BLeaderboard.png");
         
+        play = new JButton(new ImageIcon(imgP.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
+        play.setBorder(BorderFactory.createEmptyBorder());
+        play.setContentAreaFilled(false);
+        play.setBounds(215, 350,70, 70);
+        play.setEnabled(true);
+        play.setVisible(false);
+        
+        restart = new JButton(new ImageIcon(imgR.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
+        restart.setBorder(BorderFactory.createEmptyBorder());
+        restart.setContentAreaFilled(false);
+        restart.setBounds(100, 400,120, 70);
+        restart.setEnabled(false);
+        restart.setVisible(false);
+        
+        leaderBoard = new JButton(new ImageIcon(imgL.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
+        leaderBoard.setBorder(BorderFactory.createEmptyBorder());
+        leaderBoard.setContentAreaFilled(false);
+        leaderBoard.setBounds(270, 400,120, 70);
+        leaderBoard.setEnabled(false);
+        leaderBoard.setVisible(false);
+        
+        layeredPane.add(play, new Integer(5));
+        layeredPane.add(restart, new Integer(5));
+        layeredPane.add(leaderBoard, new Integer(5));
     }
     
     /**
@@ -129,9 +160,9 @@ public class Screen extends JFrame{
         puntaje.setBounds(WIDTH/2,65,30,30);
         puntaje.setFont(new Font("Serif", Font.BOLD, 25));
         puntaje.setForeground(color);
-        layeredPane.add(puntaje, new Integer(5));
+        layeredPane.add(puntaje, new Integer(6));
         
-        
+        repaint();
         // temporal mostrar rectángulos para ver colisiones
         /*
         pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
@@ -151,7 +182,18 @@ public class Screen extends JFrame{
     public void sumarPunto(int score){
         puntaje.setText(String.valueOf(score));
     }
-
+    
+    public void mostrarPuntaje(int score){
+        ImageIcon imgS = new ImageIcon("WResult.png");
+        
+        puntajeFinal = new JLabel(new ImageIcon(imgS.getImage().getScaledInstance(220, 270, Image.SCALE_SMOOTH)));
+        puntajeFinal.setBounds(137, 100, 220, 270);
+        layeredPane.add(puntajeFinal, new Integer(5));
+        
+        puntaje.setBounds(240,186,30,30);
+        Color color = new Color(92,60,6);
+        puntaje.setForeground(color);
+    }
     /**
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
      * @param bird Objeto tipo Bird (que representa el quetzal).
@@ -269,5 +311,78 @@ public class Screen extends JFrame{
         cloud2.setX(cloud2.getX()-20);
         nube2.setLocation(cloud2.getX(), cloud2.getY());   
         cloud2.setRectangle(nube2.getBounds());
+    }
+    
+    public void setButtons(boolean bool){
+        restart.setEnabled(bool);
+        restart.setVisible(bool);
+        leaderBoard.setEnabled(bool);
+        leaderBoard.setVisible(bool);
+    }
+    
+    public JButton getPlayButton(){
+        return play;
+    }
+    
+    public JButton getRestartButton(){
+        return restart;
+    }
+    
+    public JButton getLeaderboardButton(){
+        return leaderBoard;
+    }
+    
+    
+    // coloca personajes en punto original 
+    public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, int score){
+  
+        pajaro.setBounds(0, 0, 85, 85);
+        bird.setX(50);
+        bird.setY(50);
+        bird.setRectangle(pajaro.getBounds());
+        pajaro.setLocation(bird.getX(), bird.getY());
+        //arbol1.setBounds(WIDTH, 270, 250, 420); 
+        tree1.setX(WIDTH);
+        tree1.setY(270);
+        tree1.setRectangle(arbol1.getBounds());  
+        arbol1.setLocation(tree1.getX(), tree1.getY());
+               
+        arbol2.setBounds(0, 0, 250, 420);   
+        tree2.setX(WIDTH*2);
+        tree2.setY(560);
+        tree2.setRectangle(arbol2.getBounds());
+        arbol2.setLocation(tree2.getX(), tree2.getY());
+        
+        nube1.setBounds(0, 0, 120, 90);  
+        cloud1.setX(tree1.getX()+65);
+        cloud1.setY(-100);
+        cloud1.setRectangle(nube1.getBounds());     
+        nube1.setLocation(cloud1.getX(), cloud1.getY());   
+            
+        nube2.setBounds(0, 0, 120, 90);
+        cloud2.setX(tree2.getX()+65);
+        cloud2.setY(-200);
+        cloud2.setRectangle(nube2.getBounds());
+        nube2.setLocation(cloud2.getX(), cloud2.getY());
+        
+        
+        puntaje.setBounds(WIDTH/2,65,30,30);
+        puntaje.setText(String.valueOf(score));
+    }
+    
+   
+    // quita solo personajes y reinicia a puntaje
+    public void clearScreen(){
+        layeredPane.remove(pajaro);
+        layeredPane.remove(arbol1);
+        layeredPane.remove(nube1);
+        layeredPane.remove(nube2);
+        layeredPane.remove(arbol2);
+        layeredPane.remove(puntajeFinal);
+        Color color = new Color(229,255,205);
+        puntaje.setBounds(WIDTH/2,65,30,30);
+        puntaje.setForeground(color);
+        puntaje.setText("0");
+        repaint();
     }
 }

@@ -1,5 +1,7 @@
 package flappybird;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -20,6 +22,7 @@ public class Controller {
     private int puntaje = 0;
     private Sonidos sonido;
     boolean contado = true;
+    boolean running =  true;
 
     /**
      * Constructor de la clase.
@@ -41,7 +44,7 @@ public class Controller {
         this.sonido = sonidos;
         this.pasto = pasto;
         this.techo = techo;
-        //screen.colocarComponentes();
+        screen.colocarComponentes();
         //screen.colocarPersonajes(bird, tree1, tree2,nube1, nube2);
         screen.setVisible(mostrar);
         initController();
@@ -94,7 +97,7 @@ public class Controller {
      * @throws InterruptedException En caso de no poder dormir al hilo se lanzará esta excepción.
      */
     public void jugar() throws InterruptedException{
-        screen.colocarComponentes();
+        //screen.colocarComponentes();
         screen.colocarPersonajes(bird, tree1, tree2, nube1, nube2, pasto, techo,puntaje);
         //screen.setVisible(true);
         screen.revalidate();
@@ -140,7 +143,32 @@ public class Controller {
         //}
         puntaje(puntaje);
     }
-        
+    
+    public void gameOver(){
+        // abilita botones finales
+       screen.setButtons(true);
+       screen.mostrarPuntaje(puntaje);
+       // si se presiona restart
+        screen.getRestartButton().addActionListener( new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                // se esconden botones
+                screen.setButtons(false);
+                System.out.println("Los botones funcionna ");
+                
+                //setRunning(true);
+                // limpia pantalla
+                screen.clearScreen();
+            }
+        }); 
+    }
+    
+    public void setRunning(boolean bol){
+        running =  bol;
+    }
+    
+    public boolean running(){
+        return running;
+    }
     /**
      * Método para revisar las colisiones
      * @return Si ocurrió una colisión regresará true; caso contrario, false.
