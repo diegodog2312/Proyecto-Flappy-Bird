@@ -55,22 +55,21 @@ public class Main {
         t1.join(); 
         controller.gameOver();
         t1.start();
-//        Cuadro frame = new Cuadro(controller);
-//        frame.setSize(518,724);
-//        frame.setLocationRelativeTo(null);
-//        frame.setResizable(false);
-//        frame.setLayout(new CardLayout());
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        //NewJPanel p_inicio = new NewJPanel(controller);
-//        //frame.add(p_inicio,BorderLayout.CENTER);
-//        //frame.add(screen.layeredPane);
-//        //p_inicio.setOpaque(true);
-//        //frame.setUndecorated(true);
-//        frame.setVisible(true);
-//        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));
-//        frame.revalidate();
-//        frame.repaint();
-        
+/*        Cuadro frame = new Cuadro(controller);
+        frame.setSize(518,724);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setLayout(new CardLayout());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        NewJPanel p_inicio = new NewJPanel(controller);
+        frame.add(p_inicio,BorderLayout.CENTER);
+        frame.add(screen.layeredPane);
+        p_inicio.setOpaque(true);
+        frame.setUndecorated(true);
+        frame.setVisible(true);
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Cuadro.class.getResource("quetzal.png")));
+        frame.revalidate();
+        frame.repaint();*/        
     }
     
 }
