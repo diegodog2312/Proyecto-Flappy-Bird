@@ -1,12 +1,9 @@
 package flappybird;
 
-import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  * Clase Controller, encargada de controlar el estado del juego, a través de
