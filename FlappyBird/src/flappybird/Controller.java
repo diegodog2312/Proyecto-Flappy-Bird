@@ -93,7 +93,7 @@ public class Controller {
             musica();            
         });
         
-        screen.getInfoButton().addActionListener(e-> show = screen.showInfo(show));
+        
         
     }
 
@@ -167,6 +167,7 @@ public class Controller {
         screen.getPajaro().setVisible(false);
         Scores scores = puntaje(puntaje);
         screen.mostrarPuntaje(puntaje, maxPuntaje);
+        screen.getInfoButton().addActionListener(e-> show = screen.showInfo(show));
         screen.getBrestart().addActionListener(e -> {
             screen.getPajaro().setVisible(true);
             screen.getPuntajeFinal().setVisible(false);
