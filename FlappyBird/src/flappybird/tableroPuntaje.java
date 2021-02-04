@@ -12,7 +12,7 @@ public class tableroPuntaje extends javax.swing.JPanel {
             
     /**
      * Constructor de la clase, se especifica el tamaño que tendrá el panel y el objeto tipo Scores que se utilizará.
-     * @param scores
+     * @param scores Objeto tipo Scores de donde se leerán los puntajes máximos almacenados.
      */
     public tableroPuntaje(Scores scores) {
         this.setSize(240, 180);
