@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.logging.*;
 
 /**
- * En esta clase se escribirá en el archivo highscores.dat los puntajes máximos con un límite de 3 puntajes almacenados.
+ * Clase en la cual se escribirá en el archivo highscores.dat los puntajes máximos con un límite de 3 puntajes almacenados.
  * @author Proyecto POO
  */
 public class ScoresFile {

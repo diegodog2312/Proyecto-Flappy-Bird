@@ -2,10 +2,18 @@ package flappybird;
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * Clase encargada de mostrar los puntajes máximos.
+ * @author Proyecto POO
+ */
 public class tableroPuntaje extends javax.swing.JPanel {
     
     Scores scores;
             
+    /**
+     * Constructor de la clase, se especifica el tamaño que tendrá el panel y el objeto tipo Scores que se utilizará.
+     * @param scores
+     */
     public tableroPuntaje(Scores scores) {
         this.setSize(240, 180);
         this.scores = scores;

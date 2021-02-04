@@ -7,7 +7,7 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 /**
- *Esta clase es la encargada de reproducir los sonidos para dar la ambientación musical al juego.
+ *Clase encargada de reproducir los sonidos para dar la ambientación musical al juego.
  * @author Proyecto POO
  */
 public class Sonidos {

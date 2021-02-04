@@ -444,208 +444,208 @@ public class Screen extends JFrame{
     }
             
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el Pájaro.
+     * @return JLabel de pájaro.
      */
     public JLabel getPajaro() {
         return pajaro;
     }
 
     /**
-     *
-     * @param pajaro
+     * Setter de JLabel que representa el Pájaro.
+     * @param pajaro JLabel de pájaro para asignar.
      */
     public void setPajaro(JLabel pajaro) {
         this.pajaro = pajaro;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el árbol 1.
+     * @return JLabel del árbol 1.
      */
     public JLabel getArbol1() {
         return arbol1;
     }
 
     /**
-     *
-     * @param arbol1
+     * Setter de JLabel que representa el árbol 1.
+     * @param arbol1 JLabel de árbol 1 para asignar.
      */
     public void setArbol1(JLabel arbol1) {
         this.arbol1 = arbol1;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el árbol 2.
+     * @return JLabel del árbol 2.
      */
     public JLabel getArbol2() {
         return arbol2;
     }
 
     /**
-     *
-     * @param arbol2
+     * Setter de JLabel que representa el árbol 2.
+     * @param arbol2 JLabel de árbol 2 para asignar.
      */
     public void setArbol2(JLabel arbol2) {
         this.arbol2 = arbol2;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa la nube 1.
+     * @return JLabel de la nube 1.
      */
     public JLabel getNube1() {
         return nube1;
     }
 
     /**
-     *
-     * @param nube1
+     * Setter de JLabel que representa la nube 1.
+     * @param nube1 JLabel de nube 1 para asignar.
      */
     public void setNube1(JLabel nube1) {
         this.nube1 = nube1;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa la nube 2.
+     * @return JLabel de la nube 2.
      */
     public JLabel getNube2() {
         return nube2;
     }
 
     /**
-     *
-     * @param nube2
+     * Setter de JLabel que representa la nube 2.
+     * @param nube2 JLabel de la nube 2 para asignar.
      */
     public void setNube2(JLabel nube2) {
         this.nube2 = nube2;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el fondo.
+     * @return JLabel del fondo.
      */
     public JLabel getFondo() {
         return fondo;
     }
 
     /**
-     *
-     * @param fondo
+     * Setter de JLabel que representa el fondo.
+     * @param fondo JLabel del fondo para asignar.
      */
     public void setFondo(JLabel fondo) {
         this.fondo = fondo;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el pasto.
+     * @return JLabel del pasto.
      */
     public JLabel getPasto() {
         return pasto;
     }
 
     /**
-     *
-     * @param pasto
+     * Setter de JLabel que representa el pasto.
+     * @param pasto JLabel del pasto para asignar.
      */
     public void setPasto(JLabel pasto) {
         this.pasto = pasto;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el techo.
+     * @return JLabel del techo.
      */
     public JLabel getTecho() {
         return techo;
     }
 
     /**
-     *
-     * @param techo
+     * Setter de JLabel que representa el techo.
+     * @param techo JLabel del techo para asignar.
      */
     public void setTecho(JLabel techo) {
         this.techo = techo;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el puntaje.
+     * @return JLabel del puntaje.
      */
     public JLabel getPuntaje() {
         return puntaje;
     }
 
     /**
-     *
-     * @param puntaje
+     * Setter de JLabel que representa el puntaje.
+     * @param puntaje JLabel del puntaje para asignar.
      */
     public void setPuntaje(JLabel puntaje) {
         this.puntaje = puntaje;
     }
 
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el puntaje final.
+     * @return JLabel del puntaje final.
      */
     public JLabel getPuntajeFinal() {
         return puntajeFinal;
     }
 
     /**
-     *
-     * @param puntajeFinal
+     * Setter de JLabel que representa el puntaje final.
+     * @param puntajeFinal JLabel del puntaje final para asignar.
      */
     public void setPuntajeFinal(JLabel puntajeFinal) {
         this.puntajeFinal = puntajeFinal;
     }
 
     /**
-     *
-     * @return
+     * Getter de JButton que representa el botón de jugar.
+     * @return JButton del botón de jugar.
      */
     public JButton getBplay() {
         return Bplay;
     }
 
     /**
-     *
-     * @param Bplay
+     * Setter de JButton que representa el botón de jugar.
+     * @param Bplay JButton del botón de jugar para asignar.
      */
     public void setBplay(JButton Bplay) {
         this.Bplay = Bplay;
     }
 
     /**
-     *
-     * @return
+     * Getter de JButton que representa el botón de reiniciar partida.
+     * @return JButton del botón de reiniciar partida.
      */
     public JButton getBrestart() {
         return Brestart;
     }
 
     /**
-     *
-     * @param Brestart
+     * Setter de JButton que representa el botón de reiniciar partida.
+     * @param Brestart JButton del botón de reiniciar partida para asignar.
      */
     public void setBrestart(JButton Brestart) {
         this.Brestart = Brestart;
     }
 
     /**
-     *
-     * @return
+     * Getter de JButton que representa el botón de leaderboards.
+     * @return JButton que representa el botón de leaderboards.
      */
     public JButton getBleaderBoard() {
         return BleaderBoard;
     }
 
     /**
-     *
-     * @param BleaderBoard
+     * Setter de JButton que representa el botón de leaderboards.
+     * @param BleaderBoard JButton que representa el botón de leaderboards para asignar.
      */
     public void setBleaderBoard(JButton BleaderBoard) {
         this.BleaderBoard = BleaderBoard;
@@ -662,64 +662,64 @@ public class Screen extends JFrame{
     }
     
     /**
-     *
-     * @return
+     * Getter de JLabel que representa el fondo de menú principal.
+     * @return JLabel que representa el fondo de menú principal.
      */
     public JLabel getMenu() {
         return menu;
     }
 
     /**
-     *
-     * @param menu
+     * Setter de JButton que representa el fondo de menú principal.
+     * @param menu JLabel que representa el fondo de menú principal para asignar.
      */
     public void setMenu(JLabel menu) {
         this.menu = menu;
     }
     
     /**
-     *
-     * @return
+     * Getter de JLabel que representa gif del quetzal en el menú principal.
+     * @return JLabel que representa gif del quetzal en el menú principal.
      */
     public JLabel getGif() {
          return gif;
      }
 
-    /**
-     *
-     * @param gif
+    /** 
+     * Setter de JLabel que representa gif del quetzal en el menú principal.
+     * @param gif JLabel que representa gif del quetzal en el menú principal para asignar.
      */
     public void setGif(JLabel gif) {
          this.gif = gif;
      }
 
     /**
-     *
-     * @return
+     *  Getter de JLabel que representa el logo del juego.
+     * @return JLabel que representa el logo del juego.
      */
     public JLabel getTitulo() {
          return titulo;
      }
 
     /**
-     *
-     * @param titulo
+     * Setter de JLabel que representa el logo del juego.
+     * @param titulo JLabel que representa el logo del juego para asignar.
      */
     public void setTitulo(JLabel titulo) {
          this.titulo = titulo;
      }
 
     /**
-     *
-     * @return
+     * Getter de la variable encargada de los puntos en la partida.
+     * @return Puntos en la partida.
      */
     public int getPuntos() {
          return puntos;
      }
 
     /**
-     *
-     * @param puntos
+     * Setter de la variable encargada de los puntos en la partida.
+     * @param puntos Nueva asignación para los puntos de la partida.
      */
     public void setPuntos(int puntos) {
          this.puntos = puntos;

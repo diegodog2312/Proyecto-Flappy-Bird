@@ -2,7 +2,7 @@ package flappybird;
 import java.io.*;
 
 /**
- * Mediante esta clase se maneja si el puntaje obtenido por el jugador ha superado puntajes previos.
+ * Clase que maneja si el puntaje obtenido por el jugador ha superado puntajes previos.
  * @author Proyecto POO
  */
 public class Score implements Comparable<Score>, Serializable {

@@ -3,7 +3,7 @@ import java.util.*;
 import java.text.*;
 
 /**
- * Mediante esta clase se verificarán los puntajes obtenidos.
+ * Clase usada para verificar los puntajes obtenidos.
  * @author Proyecto POO
  */
 public class Scores  {

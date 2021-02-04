@@ -171,7 +171,6 @@ public class Controller {
         Scores scores = puntaje(puntaje);
         screen.mostrarPuntaje(puntaje, maxPuntaje);
         screen.getBrestart().addActionListener(e -> {
-            System.out.println("restart");
             screen.getPajaro().setVisible(true);
             screen.getPuntajeFinal().setVisible(false);
             screen.getBrestart().setVisible(false);
@@ -242,7 +241,7 @@ public class Controller {
      * Mediante este método se verificará y escribirá el puntaje.
      *
      * @param nuevoPuntaje Puntaje obtenido durante la partida.
-     * @return 
+     * @return Objeto tipo Score.
      */
     
     public Scores puntaje(int nuevoPuntaje) {
@@ -251,7 +250,7 @@ public class Controller {
         scoresFile.cargarPuntaje(scores);
         Score score = new Score(nuevoPuntaje);
         scores.anadirPuntaje(score);
-        System.out.println(scores.toString());
+        //System.out.println(scores.toString());
         scoresFile.guardarPuntos(scores);
         maxPuntaje = scores.maxScore();
         return scores;

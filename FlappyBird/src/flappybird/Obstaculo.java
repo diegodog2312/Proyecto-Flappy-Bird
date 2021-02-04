@@ -4,7 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * En esta clase se definirá, según sea el caso, los árboles y las nubes.
+ * Clase en la que se definirá, según sea el caso, los árboles, nubes y límites superior e inferior.
  * @author Proyecto POO
  */
 public class Obstaculo {
