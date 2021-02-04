@@ -158,30 +158,6 @@ public class Screen extends JFrame{
         puntaje.setForeground(color);
         layeredPane.add(puntaje, new Integer(6));
         
-        ImageIcon imgIn = new ImageIcon("BInfo.png");     
-        BInfo = new JButton(new ImageIcon(imgIn.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH)));
-        BInfo.setBorder(BorderFactory.createEmptyBorder());
-        BInfo.setContentAreaFilled(false);
-        BInfo.setBounds(WIDTH-55, 5,35, 35);        
-        BInfo.setVisible(true);
-        layeredPane.add(BInfo, new Integer(6));
-        
-        ImageIcon imgI = new ImageIcon("WInfo.png");
-        info = new JLabel(new ImageIcon(imgI.getImage().getScaledInstance(190, 170, Image.SCALE_SMOOTH)));
-        info.setBounds(WIDTH, WIDTH-200, 190, 170);
-        info.setLocation(WIDTH-225,50);
-        info.setVisible(false);
-        layeredPane.add(info, new Integer(10));
-
-        /*
-        pajaro.setBorder(BorderFactory.createLineBorder(Color.RED));
-        arbol1.setBorder(BorderFactory.createLineBorder(Color.RED));
-        arbol2.setBorder(BorderFactory.createLineBorder(Color.RED));
-        nube1.setBorder(BorderFactory.createLineBorder(Color.RED));
-        nube2.setBorder(BorderFactory.createLineBorder(Color.RED));
-        pasto.setBorder(BorderFactory.createLineBorder(Color.RED));
-        techo.setBorder(BorderFactory.createLineBorder(Color.RED));
-        */
     }
     
     /**
@@ -253,7 +229,22 @@ public class Screen extends JFrame{
         BleaderBoard.setVisible(true);
         BleaderBoard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         layeredPane.add(Brestart, new Integer(5));
-        layeredPane.add(BleaderBoard, new Integer(5));      
+        layeredPane.add(BleaderBoard, new Integer(5));    
+        
+        ImageIcon imgIn = new ImageIcon("BInfo.png");     
+        BInfo = new JButton(new ImageIcon(imgIn.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH)));
+        BInfo.setBorder(BorderFactory.createEmptyBorder());
+        BInfo.setContentAreaFilled(false);
+        BInfo.setBounds(WIDTH-55, 5,35, 35);        
+        BInfo.setVisible(true);
+        layeredPane.add(BInfo, new Integer(6));
+        
+        ImageIcon imgI = new ImageIcon("WInfo.png");
+        info = new JLabel(new ImageIcon(imgI.getImage().getScaledInstance(190, 170, Image.SCALE_SMOOTH)));
+        info.setBounds(WIDTH, WIDTH-200, 190, 170);
+        info.setLocation(WIDTH-225,50);
+        info.setVisible(false);
+        layeredPane.add(info, new Integer(10));
     }
     /**
      * Método encargado del vuelo del quetzal, se define su imagen así como cuánto se eleva en la coordenada Y.
@@ -740,6 +731,7 @@ public class Screen extends JFrame{
      */
     public void setOriginalPositions(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass, Obstaculo roof, int score){
         layeredPane.remove(max);
+        layeredPane.remove(BInfo);
         pajaro.setBounds(0, 0, 85, 85);
         bird.setX(50);
         bird.setY(50);
