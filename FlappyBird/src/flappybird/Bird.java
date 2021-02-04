@@ -14,14 +14,13 @@ public class Bird {
     private int y;
     private boolean muerto = false;
     private final int WIDTH=358;
-    private final int HEIGHT=259;
-    private String ruta = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/dist/multimedia/";
+    private final int HEIGHT=259;    
      
     /**
      * Constructor de la clase. Instancia la imagen que representará el quetzal y el rectángulo para las colisiones.
      */
     public Bird(){              
-        bird = new ImageIcon(ruta+"quetzal.png");   
+        bird = new ImageIcon(Main.URL+"quetzal.png");   
         this.rectangle = new Rectangle(0, 0, 0, 0);
     }
     

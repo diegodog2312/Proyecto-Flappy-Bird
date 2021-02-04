@@ -31,8 +31,7 @@ public class Screen extends JFrame{
     private JButton Brestart;
     private JButton BleaderBoard;
     private int puntos;
-    private JLayeredPane layeredPane = new JLayeredPane();
-    private String ruta = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/dist/multimedia/";
+    private JLayeredPane layeredPane = new JLayeredPane();    
     
     private final int HEIGHT=724;
     private final int WIDTH=518;
@@ -49,16 +48,14 @@ public class Screen extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);    
         getContentPane().add(layeredPane);    
         menuInicio();
-        puntos=0;
-        
-        //setIconImage(new ImageIcon(ruta+"quetzal.png"));
+        puntos=0;                
     }
     
     /**
      * Método donde se mostrará el menú de inicio.
      */
     public void menuInicio(){          
-        ImageIcon imgP = new ImageIcon(ruta+"BPlay.png");   
+        ImageIcon imgP = new ImageIcon(Main.URL+"BPlay.png");   
         Bplay = new JButton(new ImageIcon(imgP.getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH)));
         Bplay.setBorder(BorderFactory.createEmptyBorder());
         Bplay.setContentAreaFilled(false);
@@ -67,19 +64,19 @@ public class Screen extends JFrame{
         Bplay.setVisible(true);
         layeredPane.add(Bplay, new Integer(100));
         Bplay.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        ImageIcon bg = new ImageIcon(ruta+"fondomenur.jpg");
+        ImageIcon bg = new ImageIcon(Main.URL+"fondomenur.jpg");
         menu = new JLabel();
         menu.setIcon(bg);
         menu.setSize(WIDTH, HEIGHT);            
         layeredPane.add(menu,new Integer(99));
         
-        Icon gf = new ImageIcon(ruta+"quetzalMov.gif");
+        Icon gf = new ImageIcon(Main.URL+"quetzalMov.gif");
         gif = new JLabel(gf);
         gif.setBounds(100, 120, 239, 184);
         gif.setVisible(true);
         layeredPane.add(gif,new Integer(100));
         
-        ImageIcon title = new ImageIcon(ruta+"logo.png");
+        ImageIcon title = new ImageIcon(Main.URL+"logo.png");
         
         titulo = new JLabel(new ImageIcon(title.getImage().getScaledInstance(300, 100, Image.SCALE_SMOOTH)));
         titulo.setBounds(100, 40, 300,100);
@@ -100,7 +97,7 @@ public class Screen extends JFrame{
      * @param score Entero que mostrará en pantalla el puntaje del jugador.
      */
     public void juego(Bird bird, Obstaculo tree1, Obstaculo tree2, Obstaculo cloud1, Obstaculo cloud2, Obstaculo grass,Obstaculo roof,int score){                   
-        ImageIcon bg = new ImageIcon(ruta+"back10.jpg");
+        ImageIcon bg = new ImageIcon(Main.URL+"back10.jpg");
         fondo = new JLabel();
         fondo.setIcon(bg);
         fondo.setSize(WIDTH, HEIGHT);            
@@ -195,7 +192,7 @@ public class Screen extends JFrame{
      * @param maxPuntaje Máximo puntaje almacenado.
      */
     public void mostrarPuntaje(int score, int maxPuntaje){
-        ImageIcon imgS = new ImageIcon(ruta+"WResult.png");
+        ImageIcon imgS = new ImageIcon(Main.URL+"WResult.png");
         
         puntajeFinal = new JLabel(new ImageIcon(imgS.getImage().getScaledInstance(220, 270, Image.SCALE_SMOOTH)));
         puntajeFinal.setBounds(137, 100, 220, 270);
@@ -215,8 +212,8 @@ public class Screen extends JFrame{
         layeredPane.add(max, new Integer(6));
         
         
-        ImageIcon imgR = new ImageIcon(ruta+"BRestart.png");
-        ImageIcon imgL = new ImageIcon(ruta+"BLeaderboard.png");                
+        ImageIcon imgR = new ImageIcon(Main.URL+"BRestart.png");
+        ImageIcon imgL = new ImageIcon(Main.URL+"BLeaderboard.png");                
         
         Brestart = new JButton(new ImageIcon(imgR.getImage().getScaledInstance(120, 70, Image.SCALE_SMOOTH)));
         Brestart.setBorder(BorderFactory.createEmptyBorder());
@@ -233,7 +230,7 @@ public class Screen extends JFrame{
         layeredPane.add(Brestart, new Integer(5));
         layeredPane.add(BleaderBoard, new Integer(5));    
         
-        ImageIcon imgIn = new ImageIcon(ruta+"BInfo.png");     
+        ImageIcon imgIn = new ImageIcon(Main.URL+"BInfo.png");     
         BInfo = new JButton(new ImageIcon(imgIn.getImage().getScaledInstance(35, 35, Image.SCALE_SMOOTH)));
         BInfo.setBorder(BorderFactory.createEmptyBorder());
         BInfo.setContentAreaFilled(false);
@@ -241,7 +238,7 @@ public class Screen extends JFrame{
         BInfo.setVisible(true);
         layeredPane.add(BInfo, new Integer(6));
         
-        ImageIcon imgI = new ImageIcon(ruta+"WInfo.png");
+        ImageIcon imgI = new ImageIcon(Main.URL+"WInfo.png");
         info = new JLabel(new ImageIcon(imgI.getImage().getScaledInstance(190, 170, Image.SCALE_SMOOTH)));
         info.setBounds(WIDTH, WIDTH-200, 190, 170);
         info.setLocation(WIDTH-225,50);
@@ -279,7 +276,7 @@ public class Screen extends JFrame{
             @Override
             public void run() {
                 while(!bird.isMuerto()){
-                    ImageIcon imagen = new ImageIcon(ruta+"quetzal11.png");         
+                    ImageIcon imagen = new ImageIcon(Main.URL+"quetzal11.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -289,7 +286,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal12.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal12.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -299,7 +296,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal13.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal13.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -309,7 +306,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal21.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal21.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -319,7 +316,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal22.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal22.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -329,7 +326,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal23.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal23.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -339,7 +336,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal31.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal31.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -349,7 +346,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal32.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal32.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -359,7 +356,7 @@ public class Screen extends JFrame{
                         Logger.getLogger(Screen.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    imagen = new ImageIcon(ruta+"quetzal33.png");         
+                    imagen = new ImageIcon(Main.URL+"quetzal33.png");         
                     bird.setBird(imagen);        
                     imagen = new ImageIcon(bird.getBird().getImage().getScaledInstance(85, 85, Image.SCALE_SMOOTH));        
                     pajaro.setIcon(imagen);     
@@ -788,7 +785,7 @@ public class Screen extends JFrame{
         frame.setSize(240, 180); 
         JPanel panel = new JPanel(); 
         
-        ImageIcon imgRegreso = new ImageIcon(ruta+"Button.png");   
+        ImageIcon imgRegreso = new ImageIcon(Main.URL+"Button.png");   
         
         
         JButton back = new JButton("Regresar");
