@@ -6,6 +6,7 @@ package flappybird;
  */
 public class Main {
 
+    //Reemplace la URL por la ruta en donde se encuentre la carpeta de multimedios
     final public static String URL = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/src/multimedia/";
     /**
      * Método principal, en él se instanciarán los personajes del juego y el controlador.Además, se iniciará el juego.
