@@ -27,7 +27,8 @@ public class Controller {
     boolean running = true;
     boolean show = true;
     private int maxPuntaje = 0;
-
+    private String ruta = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/dist/multimedia/";
+    
     /**
      * Constructor de la clase.
      *
@@ -120,7 +121,7 @@ public class Controller {
                         //sonido.stop();
                         sonido.stop();
                         bird.Matar();
-                        sonido.reproducirSonido("muerte.wav");                        
+                        sonido.reproducirSonido(ruta+"muerte.wav");                        
                         gameOver();
                         
                     } else {
@@ -129,18 +130,17 @@ public class Controller {
                             puntaje++;
                             screen.sumarPunto(puntaje);
                             contado = false;
-                            sonido.reproducirSonido("puntito.wav");
+                            sonido.reproducirSonido(ruta+"puntito.wav");
                         }
                         // si todavia no se cuenta el arbol 2, suma un punto por haberlo pasado
                         if (tree2.getX() + 40 <= bird.getX() & !contado) {
                             puntaje++;
                             screen.sumarPunto(puntaje);
                             contado = true;
-                            sonido.reproducirSonido("puntito.wav");
+                            sonido.reproducirSonido(ruta+"puntito.wav");
                         }
                     }
                 }
-               // puntaje(puntaje);
             }
         });                                                
         t1.start();                
@@ -153,8 +153,8 @@ public class Controller {
         Thread t2 = new Thread(new Runnable() {
             @Override
             public void run() {
-                sonido.reproducirLoop("fondo.wav");
-                sonido.reproducirLoop("volando.wav");                                                 
+                sonido.reproducirLoop(ruta+"fondo.wav");
+                sonido.reproducirLoop(ruta+"volando.wav");                                                 
             }
         });
         t2.start();

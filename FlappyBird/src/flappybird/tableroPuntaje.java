@@ -9,7 +9,8 @@ import javax.swing.*;
 public class tableroPuntaje extends javax.swing.JPanel {
     
     Scores scores;
-            
+    private String ruta = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/dist/multimedia/";
+    
     /**
      * Constructor de la clase, se especifica el tamaño que tendrá el panel y el objeto tipo Scores que se utilizará.
      * @param scores Objeto tipo Scores de donde se leerán los puntajes máximos almacenados.
@@ -28,7 +29,7 @@ public class tableroPuntaje extends javax.swing.JPanel {
     public void paint(Graphics grafico) {
         Dimension height = getSize();
         
-        ImageIcon img = new ImageIcon("fondo.png");
+        ImageIcon img = new ImageIcon(ruta+"fondo.png");
         grafico.drawImage(img.getImage(), 0, 0, height.width, height.height, null);
 
         Color color = new Color(41,176,76);

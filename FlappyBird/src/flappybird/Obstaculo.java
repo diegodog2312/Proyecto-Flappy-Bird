@@ -14,6 +14,7 @@ public class Obstaculo {
     private Rectangle rectangle;
     private final int HEIGHT;
     private final int WIDTH;
+    private String ruta = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/dist/multimedia/";
 
     /**
      * Dependiendo del entero recibido se iniciará la correspondiente imagen
@@ -23,16 +24,16 @@ public class Obstaculo {
         
         switch(n){
             case 0:
-                obs = new ImageIcon("tree0.png");
+                obs = new ImageIcon(ruta+"tree0.png");
                 break;
             case 1:
-                obs = new ImageIcon("nube2.png");
+                obs = new ImageIcon(ruta+"nube2.png");
                 break;
             case 2:
-                obs = new ImageIcon("grass.png");
+                obs = new ImageIcon(ruta+"grass.png");
                 break;
             case 3:
-                obs = new ImageIcon("roof.png");
+                obs = new ImageIcon(ruta+"roof.png");
                 break;
             default:
                 System.exit(-1);
