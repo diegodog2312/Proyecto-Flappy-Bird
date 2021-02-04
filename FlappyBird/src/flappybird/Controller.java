@@ -140,7 +140,7 @@ public class Controller {
                         }
                     }
                 }
-                puntaje(puntaje);
+               // puntaje(puntaje);
             }
         });                                                
         t1.start();                
@@ -248,7 +248,7 @@ public class Controller {
         scoresFile.cargarPuntaje(scores);
         Score score = new Score(nuevoPuntaje);
         scores.anadirPuntaje(score);
-        //System.out.println(scores.toString());
+        System.out.println(scores.toString());
         scoresFile.guardarPuntos(scores);
         maxPuntaje = scores.maxScore();
         return scores;
