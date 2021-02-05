@@ -1,13 +1,14 @@
 package flappybird;
-
+import java.io.*;
 /**
  * Clase principal, en esta clase se tendrá al método main para dar inicio al programa.
  * @author Proyecto POO
  */
 public class Main {
 
-    // Reemplace la URL por la ruta en donde se encuentre la carpeta de multimedios
-    final public static String URL = "/Users/diegoignacionunezhernandez/OneDrive - Escuela Nacional Colegio de Ciencias y Humanidades, UNAM/POO_/Proyecto 1/Proyecto-Flappy-Bird/FlappyBird/src/multimedia/";
+    // La carpeta multimedia se debe de encontrar en el mismo directorio que el jar
+    public static String ruta = new File("").getAbsolutePath();
+    final public static String URL = ruta + "/multimedia/";
     /**
      * Método principal, en él se instanciarán los personajes del juego y el controlador.Además, se iniciará el juego.
      * @param args the command line arguments
@@ -23,7 +24,7 @@ public class Main {
         Obstaculo techo = new Obstaculo(3);
         Screen screen = new Screen();
         Sonidos sonidos = new Sonidos();
-
+        System.out.println("URL = "+URL);
         Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo);
         controller.initController();
          
