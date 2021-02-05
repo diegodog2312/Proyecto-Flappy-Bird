@@ -780,7 +780,7 @@ public class Screen extends JFrame{
         
         JFrame frame = new JFrame("Puntaje");
         frame.setUndecorated(true);
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
+        //frame.setIconImage(Toolkit.getDefaultToolkit().getImage(Screen.class.getResource("quetzal.png")));
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       
         frame.setSize(240, 180); 
         JPanel panel = new JPanel(); 

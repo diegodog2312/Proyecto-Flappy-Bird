@@ -1,4 +1,4 @@
-package flappybird;
+ package flappybird;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

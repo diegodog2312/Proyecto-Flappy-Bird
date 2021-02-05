@@ -24,7 +24,6 @@ public class Main {
         Obstaculo techo = new Obstaculo(3);
         Screen screen = new Screen();
         Sonidos sonidos = new Sonidos();
-        System.out.println("URL = "+URL);
         Controller controller = new Controller(bird, arbol1, arbol2,nube1, nube2, screen,sonidos,pasto,techo);
         controller.initController();
          
